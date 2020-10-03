@@ -30,7 +30,8 @@
                 limit: data.length,
                 offset: data.start,
                 order: data.order,
-                search: data.search
+                search: data.search,
+                all: 1
             }, function(res) {
                 arrayCategories = [];
                 res.data.forEach(element => {
