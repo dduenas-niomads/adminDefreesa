@@ -65,6 +65,8 @@ Route::put('/categories', 'Category\CategoryController@updateForm')->name('updat
 Route::post('/categories', 'Category\CategoryController@createForm')->name('create-form-category');
 Route::delete('/categories', 'Category\CategoryController@deleteForm')->name('delete-form-category');
 Route::put('/categories/{id}', 'Category\CategoryController@update')->name('update-category');
+// Suppliers
+Route::get('/suppliers', 'Supplier\SupplierController@index')->name('suppliers');
 // Clients
 Route::get('/clients', 'Client\ClientController@index')->name('clients');
 Route::get('/clients/edit/{id}', 'Client\ClientController@edit')->name('client-edit');

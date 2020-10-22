@@ -22,3 +22,4 @@ Route::middleware('web')->get('/products', 'Product\ApiProductController@getList
 Route::middleware('web')->get('/clients', 'Client\ApiClientController@getList')->name('api-clients-list');
 Route::middleware('web')->get('/orders', 'Order\ApiOrderController@getList')->name('api-orders-list');
 Route::middleware('web')->get('/categories', 'Category\ApiCategoryController@getList')->name('api-categories-list');
+Route::middleware('web')->get('/suppliers', 'Supplier\ApiSupplierController@getList')->name('api-suppliers-list');

@@ -26,7 +26,7 @@
             },
             "order": [[ 2, "asc" ]],
             "ajax": function(data, callback, settings) {
-                $.get('/api/categories', {
+                $.get('/api/suppliers', {
                     limit: data.length,
                     offset: data.start,
                     order: data.order,

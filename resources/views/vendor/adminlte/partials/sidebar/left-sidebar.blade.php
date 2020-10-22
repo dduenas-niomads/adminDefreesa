@@ -53,7 +53,7 @@
             </ul>
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu">
                 <li class="nav-item">
-                    <a href="/suppliers" class="nav-link  @yield('nav-warehouses')">
+                    <a href="/suppliers" class="nav-link  @yield('nav-suppliers')">
                         <i class="fa fa-store-alt nav-icon "></i>
                         <p>Proveedores</p>
                     </a>
