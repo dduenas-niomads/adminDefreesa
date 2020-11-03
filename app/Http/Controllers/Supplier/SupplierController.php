@@ -24,7 +24,6 @@ class SupplierController extends Controller
     public function index()
     {
         $categories = ApiCategoryController::getListSimple();
-        dd($categories);
         $view = view('suppliers.suppliers', compact('categories'));
         return $view;
     }

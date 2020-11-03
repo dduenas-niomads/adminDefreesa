@@ -50,7 +50,7 @@
 								<div class="card card-primary card-outline">
 									<div class="card-body box-profile">
 										<div class="text-center">
-											<img class="profile-user-img img-fluid img-circle" id="editModalImg" src="/img/logo.png" alt="User profile picture" height="100px">
+											<img class="profile-user-img img-fluid img-circle" id="infoModalImg" src="/img/logo.png" alt="User profile picture" height="100px">
 										</div>
 										<br>
 										<ul class="list-group list-group-unbordered mb-3">
@@ -185,7 +185,7 @@
 			<div class="modal-dialog modal-lg">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h4 class="modal-title">Crear nueva categoría</h4>
+					<h4 class="modal-title">Crear nuevo proveedor</h4>
 				</div>
 				<div class="modal-body" id="newModalBody">
 					<div class="row">
@@ -195,23 +195,33 @@
 									<div class="tab-content">
 										<!-- /.tab-pane -->
 										<div class="active tab-pane" id="new">
-											{{ Form::open(array('url' => '/categories', 'method' => 'POST')) }}
+											{{ Form::open(array('url' => '/suppliers', 'method' => 'POST')) }}
+											<div class="form-group row">
+												<label class="col-sm-3 col-form-label">Categoría</label>
+												<div class="col-sm-9">
+													<select class="form-control" placeholder="Seleccione una categoría" name="bs_categories_id" id="newModalCategoryId">
+														@foreach ($categories as $category)
+															<option value="{{ $category->id }}">{{ $category->name }}</option>
+														@endforeach
+													</select>
+												</div>
+											</div>
 											<div class="form-group row">
 												<label class="col-sm-3 col-form-label">Nombre</label>
 												<div class="col-sm-9">
-													<input type="text" class="form-control" placeholder="Nombre" name="name" id="editModalName" onClick="this.select();" autocomplete="off" maxlength="100" required>
+													<input type="text" class="form-control" placeholder="Nombre" name="name" id="newModalName" onClick="this.select();" autocomplete="off" maxlength="100" required>
 												</div>
 											</div>
 											<div class="form-group row">
 												<label class="col-sm-3 col-form-label">Descripción</label>
 												<div class="col-sm-9">
-													<input type="text" class="form-control" placeholder="Descripción" name="description" id="editModalDescription" onClick="this.select();" autocomplete="off" maxlength="200">
+													<input type="text" class="form-control" placeholder="Descripción" name="description" id="newModalDescription" onClick="this.select();" autocomplete="off" maxlength="200">
 												</div>
 											</div>
 											<div class="form-group row">
 												<label class="col-sm-3 col-form-label">Estado</label>
 												<div class="col-sm-9">
-													<select name="flag_active" id="editModalFlagActive" class="custom-select">
+													<select name="flag_active" id="newModalFlagActive" class="custom-select">
 														<option value="1">ACTIVO</option>
 														<option value="0">INACTIVO</option>
 													</select>
