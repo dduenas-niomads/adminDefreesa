@@ -24,7 +24,7 @@
             "language": {
                 "url": "/js/languages/datatables/es.json"
             },
-            "order": [[ 2, "asc" ]],
+            "order": [[ 1, "asc" ]],
             "ajax": function(data, callback, settings) {
                 $.get('/api/categories', {
                     limit: data.length,
