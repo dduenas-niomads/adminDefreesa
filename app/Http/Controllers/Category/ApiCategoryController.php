@@ -69,7 +69,7 @@ class ApiCategoryController extends Controller
         if (Auth::user()) {
             $request = HttpClient::withHeaders([
                 'Authorization' => 'Bearer ' . Auth::user()->access_token
-            ])->get(env('API_BUSINESS_URL') . '/categories/' . $id);
+            ])->get(env('API_BUSINESS_URL') . 'categories/' . $id);
             if ($request->successful()) {
                 $response = $request->json();
                 $response = $response['body'];
@@ -102,7 +102,7 @@ class ApiCategoryController extends Controller
         if (Auth::user()) {
             $request = HttpClient::withHeaders([
                 'Authorization' => 'Bearer ' . Auth::user()->access_token
-            ])->post(env('API_BUSINESS_URL') . '/categories', $params);
+            ])->post(env('API_BUSINESS_URL') . 'categories', $params);
             if ($request->successful()) {
                 $response = $request->json();
                 $response['result'] = "success";
@@ -118,10 +118,9 @@ class ApiCategoryController extends Controller
     {
         $response = [];
         if (Auth::user()) {
-            dd(env('API_BUSINESS_URL') . '/categories/' . $id);
             $request = HttpClient::withHeaders([
                 'Authorization' => 'Bearer ' . Auth::user()->access_token
-            ])->delete(env('API_BUSINESS_URL') . '/categories/' . $id);
+            ])->delete(env('API_BUSINESS_URL') . 'categories/' . $id);
             if ($request->successful()) {
                 $response = $request->json();
                 $response['result'] = "success";
