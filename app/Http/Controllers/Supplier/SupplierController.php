@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Supplier;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Supplier\ApiSupplierController;
+use App\Http\Controllers\Category\ApiCategoryController;
 use Auth;
 use Carbon\Carbon;
 
@@ -22,7 +23,9 @@ class SupplierController extends Controller
     
     public function index()
     {
-        $view = view('suppliers.suppliers');
+        $categories = ApiCategoryController::getList();
+        dd($categories);
+        $view = view('suppliers.suppliers', compact('categories'));
         return $view;
     }
 }
