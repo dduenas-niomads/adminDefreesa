@@ -201,7 +201,7 @@
 												<div class="col-sm-9">
 													<select class="form-control" placeholder="Seleccione una categoría" name="bs_categories_id" id="newModalCategoryId">
 														@foreach ($categories as $category)
-															<option value="{{ $category->id }}">{{ $category->name }}</option>
+															<option value="{{ $category['id'] }}">{{ $category['name'] }}</option>
 														@endforeach
 													</select>
 												</div>
