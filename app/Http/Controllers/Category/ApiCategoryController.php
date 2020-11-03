@@ -57,7 +57,7 @@ class ApiCategoryController extends Controller
         if (Auth::user()) {
             $params = [];
             $params['order'] = self::optimizeOrder(isset($params['order']) ? $params['order'] : null);
-            $response = self::getListParent($params, 'categories', null);
+            $response = self::getListParent($params, 'categories/simple', null);
             if (isset($response['body'])) {
                 $response = $response['body'];
             }
