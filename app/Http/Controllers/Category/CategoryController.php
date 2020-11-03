@@ -59,7 +59,6 @@ class CategoryController extends Controller
     {
         $params = $request->all();
         $notification = true;
-        dd($params);
         $result = ApiCategoryController::delete(isset($params['id']) ? (int)$params['id'] : null);
         $view = view('categories.categories', compact('notification', 'result'));
         return $view;

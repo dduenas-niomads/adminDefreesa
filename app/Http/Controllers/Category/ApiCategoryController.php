@@ -118,6 +118,7 @@ class ApiCategoryController extends Controller
     {
         $response = [];
         if (Auth::user()) {
+            dd(env('API_BUSINESS_URL') . '/categories/' . $id);
             $request = HttpClient::withHeaders([
                 'Authorization' => 'Bearer ' . Auth::user()->access_token
             ])->delete(env('API_BUSINESS_URL') . '/categories/' . $id);
