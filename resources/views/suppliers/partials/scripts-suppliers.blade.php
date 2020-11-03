@@ -8,8 +8,8 @@
 <script src="{{ asset('scripts/datatables/responsive.bootstrap4.min.js') }}"></script>
 <!-- functions -->
 <script>
-    var arrayCategories = [];
-    var categoryId = 0;
+    var arraySuppliers = [];
+    var supplierId = 0;
     $(function () {
         $("#example1").DataTable({
             "info": true,
@@ -33,9 +33,9 @@
                     search: data.search,
                     all: 1
                 }, function(res) {
-                    arrayCategories = [];
+                    arraySuppliers = [];
                     res.data.forEach(element => {
-                    arrayCategories[element.id] = element;
+                    arraySuppliers[element.id] = element;
                     });
                     callback({
                         recordsTotal: res.total,
@@ -74,49 +74,50 @@
             $('#modal-new').modal({ backdrop: 'static', keyboard: false });
         }
         openInfoModal = function(id) {
-            categoryId = id;
+            supplierId = id;
             var infoModalBody = document.getElementById('infoModalBody');
             if (infoModalBody != null) {
                 // innerHTML
-                document.getElementById('infoModalCreatedAt').innerHTML = arrayCategories[categoryId].created_at;
-                document.getElementById('infoModalUpdatedAt').innerHTML = arrayCategories[categoryId].updated_at;
-                $("#infoModalImg").attr("src", arrayCategories[categoryId].url_image);
+                document.getElementById('infoModalCreatedAt').innerHTML = arraySuppliers[supplierId].created_at;
+                document.getElementById('infoModalUpdatedAt').innerHTML = arraySuppliers[supplierId].updated_at;
+                $("#infoModalImg").attr("src", arraySuppliers[supplierId].url_image);
                 // input value
-                document.getElementById('infoModalName').value = arrayCategories[categoryId].name;
-                document.getElementById('infoModalDescription').value = arrayCategories[categoryId].description;
-                document.getElementById('infoModalFlagActive').value = arrayCategories[categoryId].flag_active;
+                document.getElementById('infoModalName').value = arraySuppliers[supplierId].name;
+                document.getElementById('infoModalDescription').value = arraySuppliers[supplierId].description;
+                document.getElementById('infoModalFlagActive').value = arraySuppliers[supplierId].flag_active;
             }
             $('#modal-info').modal({ backdrop: 'static', keyboard: false });
         }
         openEditModal = function(id) {
-            categoryId = id;
+            supplierId = id;
             var editModalBody = document.getElementById('editModalBody');
             if (editModalBody != null) {
                 // innerHTML
-                document.getElementById('editModalCreatedAt').innerHTML = arrayCategories[categoryId].created_at;
-                document.getElementById('editModalUpdatedAt').innerHTML = arrayCategories[categoryId].updated_at;
-                $("#editModalImg").attr("src", arrayCategories[categoryId].url_image);
+                document.getElementById('editModalCreatedAt').innerHTML = arraySuppliers[supplierId].created_at;
+                document.getElementById('editModalUpdatedAt').innerHTML = arraySuppliers[supplierId].updated_at;
+                $("#editModalImg").attr("src", arraySuppliers[supplierId].url_image);
                 // input value
-                document.getElementById('editModalId').value = categoryId;
-                document.getElementById('editModalName').value = arrayCategories[categoryId].name;
-                document.getElementById('editModalDescription').value = arrayCategories[categoryId].description;
-                document.getElementById('editModalFlagActive').value = arrayCategories[categoryId].flag_active;
+                document.getElementById('editModalId').value = supplierId;
+                document.getElementById('editModalName').value = arraySuppliers[supplierId].name;
+                document.getElementById('editModalCategoryId').value = arraySuppliers[supplierId].bs_categories_id;
+                document.getElementById('editModalDescription').value = arraySuppliers[supplierId].description;
+                document.getElementById('editModalFlagActive').value = arraySuppliers[supplierId].flag_active;
             }
             $('#modal-edit').modal({ backdrop: 'static', keyboard: false });
         }
         openDeactivateModal = function(id) {
-            categoryId = id;
+            supplierId = id;
             var deleteModalBody = document.getElementById('deleteModalBody');
             if (deleteModalBody != null) {
                 // input value
-                document.getElementById('deleteModalId').value = categoryId;
-                deleteModalBody.innerHTML = "<p>Desea eliminar la categoría: <b>" + arrayCategories[categoryId].name + "</b>?</p>"; 
+                document.getElementById('deleteModalId').value = supplierId;
+                deleteModalBody.innerHTML = "<p>Desea eliminar la categoría: <b>" + arraySuppliers[supplierId].name + "</b>?</p>"; 
             }
             $('#modal-delete').modal({ backdrop: 'static', keyboard: false });
         }
         goToEditModal = function() {
             $('#modal-info').modal('hide');
-            openEditModal(categoryId);
+            openEditModal(supplierId);
         }
     });
 </script>
