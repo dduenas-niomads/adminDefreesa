@@ -51,6 +51,20 @@ class ApiCategoryController extends Controller
         return $order;
     }
 
+    public function getListSimple()
+    {
+        $response = ["data" => []];
+        if (Auth::user()) {
+            $params = [];
+            $params['order'] = self::optimizeOrder(isset($params['order']) ? $params['order'] : null);
+            $response = self::getListParent($params, 'categories', null);
+            if (isset($response['body'])) {
+                $response = $response['body'];
+            }
+        }
+        return $response;
+    }
+
     public static function getList(Request $request) {
         $response = ["data" => []];
         if (Auth::user()) {
