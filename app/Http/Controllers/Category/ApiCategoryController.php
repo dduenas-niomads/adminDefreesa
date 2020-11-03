@@ -51,7 +51,7 @@ class ApiCategoryController extends Controller
         return $order;
     }
 
-    public function getListSimple()
+    public static function getListSimple()
     {
         $response = ["data" => []];
         if (Auth::user()) {
