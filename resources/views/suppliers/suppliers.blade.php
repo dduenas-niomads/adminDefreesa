@@ -142,11 +142,16 @@
 										<div class="active tab-pane" id="settings">
 											{{ Form::open(array('url' => '/categories', 'method' => 'PUT')) }}
 											<input type="hidden" name="id" id="editModalId">
-											<select class="form-control" placeholder="Seleccione una categoría" name="bs_categories_id" id="editModalCategoryId">
-												@foreach ($categories as $category)
-													<option value="{{ $category['id'] }}">{{ $category['name'] }}</option>
-												@endforeach
-											</select>
+											<div class="form-group row">
+												<label class="col-sm-3 col-form-label">Nombre</label>
+												<div class="col-sm-9">
+													<select class="form-control" placeholder="Seleccione una categoría" name="bs_categories_id" id="editModalCategoryId">
+														@foreach ($categories as $category)
+															<option value="{{ $category['id'] }}">{{ $category['name'] }}</option>
+														@endforeach
+													</select>
+												</div>
+											</div>
 											<div class="form-group row">
 												<label class="col-sm-3 col-form-label">Nombre</label>
 												<div class="col-sm-9">
