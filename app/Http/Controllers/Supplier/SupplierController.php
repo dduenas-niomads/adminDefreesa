@@ -27,4 +27,34 @@ class SupplierController extends Controller
         $view = view('suppliers.suppliers', compact('categories'));
         return $view;
     }
+
+    public function updateForm(Request $request)
+    {
+        $params = $request->all();
+        $notification = true;
+        $categories = ApiCategoryController::getListSimple();
+        $result = ApiSupplierController::update(isset($params['id']) ? (int)$params['id'] : null, $params);
+        $view = view('suppliers.suppliers', compact('notification', 'categories', 'result'));
+        return $view;
+    }
+
+    public function deleteForm(Request $request)
+    {
+        $params = $request->all();
+        $notification = true;
+        $categories = ApiCategoryController::getListSimple();
+        $result = ApiSupplierController::delete(isset($params['id']) ? (int)$params['id'] : null);
+        $view = view('suppliers.suppliers', compact('notification', 'categories', 'result'));
+        return $view;
+    }
+
+    public function createForm(Request $request)
+    {
+        $params = $request->all();
+        $notification = true;
+        $categories = ApiCategoryController::getListSimple();
+        $result = ApiSupplierController::create($params);
+        $view = view('suppliers.suppliers', compact('notification', 'categories', 'result'));
+        return $view;
+    }
 }

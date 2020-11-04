@@ -28,6 +28,7 @@
                         <thead>
                             <tr role="row">
                                 <th>Imagen</th>
+                                <th>Categoría</th>
                                 <th>Nombre</th>
                                 <th>Descripción</th>
                                 <th>Estado</th>
@@ -42,7 +43,7 @@
 			<div class="modal-dialog modal-lg">
 				<div class="modal-content">
 					<div class="modal-header">
-						<h4 class="modal-title">Información de categoría</h4>
+						<h4 class="modal-title">Información de proveedor</h4>
 					</div>
 					<div class="modal-body" id="infoModalBody">
 						<div class="row">
@@ -70,6 +71,12 @@
 										<div class="tab-content">
 											<!-- /.tab-pane -->
 											<div class="active tab-pane" id="info">
+												<div class="form-group row">
+													<label class="col-sm-3 col-form-label">Categoría</label>
+													<div class="col-sm-9">
+														<input type="text" class="form-control" placeholder="Nombre" id="infoModalCatName" readonly>
+													</div>
+												</div>
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label">Nombre</label>
 													<div class="col-sm-9">
@@ -101,7 +108,7 @@
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-default pull-left" data-dismiss="modal">Regresar</button>
-						<button type="button" class="btn btn-info" onClick="goToEditModal();">Editar categoría</button>
+						<button type="button" class="btn btn-info" onClick="goToEditModal();">Editar proveedor</button>
 					</div>
 				</div>
 				<!-- /.modal-content -->
@@ -112,7 +119,7 @@
 			<div class="modal-dialog modal-lg">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h4 class="modal-title">Cambiar datos de categoría</h4>
+					<h4 class="modal-title">Cambiar datos de proveedor</h4>
 				</div>
 				<div class="modal-body" id="editModalBody">
 					<div class="row">
@@ -140,10 +147,10 @@
 									<div class="tab-content">
 										<!-- /.tab-pane -->
 										<div class="active tab-pane" id="settings">
-											{{ Form::open(array('url' => '/categories', 'method' => 'PUT')) }}
+											{{ Form::open(array('url' => '/suppliers', 'method' => 'PUT')) }}
 											<input type="hidden" name="id" id="editModalId">
 											<div class="form-group row">
-												<label class="col-sm-3 col-form-label">Nombre</label>
+												<label class="col-sm-3 col-form-label">Categoría</label>
 												<div class="col-sm-9">
 													<select class="form-control" placeholder="Seleccione una categoría" name="bs_categories_id" id="editModalCategoryId">
 														@foreach ($categories as $category)
@@ -259,12 +266,12 @@
 			<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-				<h4 class="modal-title">Eliminar categoría</h4>
+				<h4 class="modal-title">Eliminar proveedor</h4>
 				</div>
 				<div class="modal-body" id="deleteModalBody">
 				</div>
 				<div class="modal-footer">
-					{{ Form::open(array('url' => '/categories', 'method' => 'DELETE')) }}
+					{{ Form::open(array('url' => '/suppliers', 'method' => 'DELETE')) }}
 					<input type="hidden" name="id" id="deleteModalId">
 					<button type="button" class="btn btn-default pull-left" data-dismiss="modal">No</button>
 					<button type="submit" class="btn btn-danger">Sí</button>

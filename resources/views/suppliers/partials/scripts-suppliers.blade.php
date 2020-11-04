@@ -49,6 +49,9 @@
                     return '<a href="' + data.url_image + '" target="_blank"><img src="' + data.url_image + '" height="50px"></a>';
                 }, "orderable": false},
                 {'data':   function (data) {
+                    return data.bs_categories_id;
+                }},
+                {'data':   function (data) {
                     return data.name;
                 }},
                 {'data':   function (data) {
@@ -82,6 +85,7 @@
                 document.getElementById('infoModalUpdatedAt').innerHTML = arraySuppliers[supplierId].updated_at;
                 $("#infoModalImg").attr("src", arraySuppliers[supplierId].url_image);
                 // input value
+                document.getElementById('infoModalCatName').value = arraySuppliers[supplierId].bs_categories_id;
                 document.getElementById('infoModalName').value = arraySuppliers[supplierId].name;
                 document.getElementById('infoModalDescription').value = arraySuppliers[supplierId].description;
                 document.getElementById('infoModalFlagActive').value = arraySuppliers[supplierId].flag_active;
@@ -111,7 +115,7 @@
             if (deleteModalBody != null) {
                 // input value
                 document.getElementById('deleteModalId').value = supplierId;
-                deleteModalBody.innerHTML = "<p>Desea eliminar la categoría: <b>" + arraySuppliers[supplierId].name + "</b>?</p>"; 
+                deleteModalBody.innerHTML = "<p>Desea eliminar el proveedor: <b>" + arraySuppliers[supplierId].name + "</b>?</p>"; 
             }
             $('#modal-delete').modal({ backdrop: 'static', keyboard: false });
         }

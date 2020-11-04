@@ -69,7 +69,7 @@ class ApiSupplierController extends Controller
         if (Auth::user()) {
             $request = HttpClient::withHeaders([
                 'Authorization' => 'Bearer ' . Auth::user()->access_token
-            ])->get(env('API_BUSINESS_URL') . '/categories/' . $id);
+            ])->get(env('API_BUSINESS_URL') . 'suppliers/' . $id);
             if ($request->successful()) {
                 $response = $request->json();
                 $response = $response['body'];
@@ -84,7 +84,7 @@ class ApiSupplierController extends Controller
         if (Auth::user()) {
             $request = HttpClient::withHeaders([
                 'Authorization' => 'Bearer ' . Auth::user()->access_token
-            ])->patch(env('API_BUSINESS_URL') . 'categories/' . $id, $params);
+            ])->patch(env('API_BUSINESS_URL') . 'suppliers/' . $id, $params);
             if ($request->successful()) {
                 $response = $request->json();
                 $response['result'] = "success";
@@ -102,7 +102,7 @@ class ApiSupplierController extends Controller
         if (Auth::user()) {
             $request = HttpClient::withHeaders([
                 'Authorization' => 'Bearer ' . Auth::user()->access_token
-            ])->post(env('API_BUSINESS_URL') . '/categories', $params);
+            ])->post(env('API_BUSINESS_URL') . 'suppliers', $params);
             if ($request->successful()) {
                 $response = $request->json();
                 $response['result'] = "success";
@@ -120,7 +120,7 @@ class ApiSupplierController extends Controller
         if (Auth::user()) {
             $request = HttpClient::withHeaders([
                 'Authorization' => 'Bearer ' . Auth::user()->access_token
-            ])->delete(env('API_BUSINESS_URL') . '/categories/' . $id);
+            ])->delete(env('API_BUSINESS_URL') . 'suppliers/' . $id);
             if ($request->successful()) {
                 $response = $request->json();
                 $response['result'] = "success";
