@@ -65,11 +65,13 @@ Route::put('/categories', 'Category\CategoryController@updateForm')->name('updat
 Route::post('/categories', 'Category\CategoryController@createForm')->name('create-form-category');
 Route::delete('/categories', 'Category\CategoryController@deleteForm')->name('delete-form-category');
 Route::put('/categories/{id}', 'Category\CategoryController@update')->name('update-category');
+Route::post('/upload', 'Category\CategoryController@uploadFile')->name('uploadfile');
 // Suppliers
 Route::get('/suppliers', 'Supplier\SupplierController@index')->name('suppliers');
 Route::put('/suppliers', 'Supplier\SupplierController@updateForm')->name('update-form-supplier');
 Route::post('/suppliers', 'Supplier\SupplierController@createForm')->name('create-form-supplier');
 Route::delete('/suppliers', 'Supplier\SupplierController@deleteForm')->name('delete-form-supplier');
+Route::post('/upload', 'Supplier\SupplierController@uploadFile')->name('uploadfile');
 // Clients
 Route::get('/clients', 'Client\ClientController@index')->name('clients');
 Route::get('/clients/edit/{id}', 'Client\ClientController@edit')->name('client-edit');

@@ -57,4 +57,20 @@ class SupplierController extends Controller
         $view = view('suppliers.suppliers', compact('notification', 'categories', 'result'));
         return $view;
     }
+
+    public function uploadFile(Request $request)
+    {
+        request()->validate([
+            'file' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+ 
+        if ($files = $request->file('file')) {
+
+            $file->save();
+
+            return Response()->json(Response::HTTP_OK);
+ 
+        }
+ 
+    }
 }

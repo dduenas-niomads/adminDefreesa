@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Category\ApiCategoryController;
 use Auth;
 use Carbon\Carbon;
+use Symfony\Component\HttpFoundation\Response;
 
 class CategoryController extends Controller
 {
@@ -71,5 +72,21 @@ class CategoryController extends Controller
         $result = ApiCategoryController::create($params);
         $view = view('categories.categories', compact('notification', 'result'));
         return $view;
+    }
+
+    public function uploadFile(Request $request)
+    {
+        request()->validate([
+            'file' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+ 
+        if ($files = $request->file('file')) {
+
+            $file->save();
+
+            return Response()->json(Response::HTTP_OK);
+ 
+        }
+ 
     }
 }

@@ -149,6 +149,20 @@
 										<div class="active tab-pane" id="settings">
 											{{ Form::open(array('url' => '/suppliers', 'method' => 'PUT')) }}
 											<input type="hidden" name="id" id="editModalId">
+											<form method="POST" enctype="multipart/form-data" id="upload_image_form" action="javascript:void(0)" >                  
+												<div class="form-group row">
+													<div class="col-sm-3 col-form-label">
+														<img id="image_preview_container" src="{{ asset('/img/logo_mini.png') }}"
+															alt="preview image" style="max-height: 150px;">
+													</div>
+													<div class="col-sm-3 col-form-label">
+														<div class="form-group">
+															<input type="file" name="file" placeholder="Elegir imagen" id="file">
+															<span class="text-danger">{{ $errors->first('title') }}</span>
+														</div>
+													</div>
+												</div>
+											</form>
 											<div class="form-group row">
 												<label class="col-sm-3 col-form-label">Categoría</label>
 												<div class="col-sm-9">
@@ -213,6 +227,20 @@
 										<!-- /.tab-pane -->
 										<div class="active tab-pane" id="new">
 											{{ Form::open(array('url' => '/suppliers', 'method' => 'POST')) }}
+											<form method="POST" enctype="multipart/form-data" id="upload_image_form" action="javascript:void(0)" >                  
+												<div class="form-group row">
+													<div class="col-sm-3 col-form-label">
+														<img id="image_preview_container" src="{{ asset('/img/logo_mini.png') }}"
+															alt="preview image" style="max-height: 150px;">
+													</div>
+													<div class="col-sm-3 col-form-label">
+														<div class="form-group">
+															<input type="file" name="file" placeholder="Elegir imagen" id="file">
+															<span class="text-danger">{{ $errors->first('title') }}</span>
+														</div>
+													</div>
+												</div>
+											</form>
 											<div class="form-group row">
 												<label class="col-sm-3 col-form-label">Categoría</label>
 												<div class="col-sm-9">
