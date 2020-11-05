@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0ac9d9aa351a831d647a317d38192b6c",
+    "content-hash": "9d187d99fd38af16ec6591c0bcb21bb9",
     "packages": [
         {
             "name": "almasaeed2010/adminlte",
@@ -436,6 +436,53 @@
                 }
             ],
             "time": "2020-10-13T00:52:37+00:00"
+        },
+        {
+            "name": "dscmall/laravel-filesystem-obs",
+            "version": "v3.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/dscmall/laravel-filesystem-obs.git",
+                "reference": "defd59c3df26b2cabb6f56fd6030efe514752e9a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/dscmall/laravel-filesystem-obs/zipball/defd59c3df26b2cabb6f56fd6030efe514752e9a",
+                "reference": "defd59c3df26b2cabb6f56fd6030efe514752e9a",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.1.3"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Obs\\ObsServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Obs\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "huawei cloud obs filesystem storage for laravel 5+",
+            "keywords": [
+                "OBS",
+                "filesystems",
+                "huawei",
+                "laravel",
+                "storage"
+            ],
+            "support": {
+                "source": "https://github.com/dscmall/laravel-filesystem-obs/tree/master"
+            },
+            "time": "2019-04-23T08:14:38+00:00"
         },
         {
             "name": "egulias/email-validator",
@@ -928,16 +975,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v7.29.2",
+            "version": "v7.29.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "0fb15ae253c3a043f2c5cbf9641427a7646ea77a"
+                "reference": "93f6d565a07045baa0e4b941ae1f733cd5984d65"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/0fb15ae253c3a043f2c5cbf9641427a7646ea77a",
-                "reference": "0fb15ae253c3a043f2c5cbf9641427a7646ea77a",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/93f6d565a07045baa0e4b941ae1f733cd5984d65",
+                "reference": "93f6d565a07045baa0e4b941ae1f733cd5984d65",
                 "shasum": ""
             },
             "require": {
@@ -1086,7 +1133,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2020-10-29T18:57:35+00:00"
+            "time": "2020-11-03T14:12:58+00:00"
         },
         {
             "name": "laravel/tinker",
@@ -1158,27 +1205,23 @@
         },
         {
             "name": "laravel/ui",
-            "version": "v2.4.1",
+            "version": "v2.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/ui.git",
-                "reference": "1c69ae3e8b52fe6c9eaf83b43c6dd8ef5c3f9e2c"
+                "reference": "d01a705763c243b07be795e9d1bb47f89260f73d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/ui/zipball/1c69ae3e8b52fe6c9eaf83b43c6dd8ef5c3f9e2c",
-                "reference": "1c69ae3e8b52fe6c9eaf83b43c6dd8ef5c3f9e2c",
+                "url": "https://api.github.com/repos/laravel/ui/zipball/d01a705763c243b07be795e9d1bb47f89260f73d",
+                "reference": "d01a705763c243b07be795e9d1bb47f89260f73d",
                 "shasum": ""
             },
             "require": {
                 "illuminate/console": "^7.0",
                 "illuminate/filesystem": "^7.0",
                 "illuminate/support": "^7.0",
-                "php": "^7.2.5"
-            },
-            "require-dev": {
-                "mockery/mockery": "^1.0",
-                "phpunit/phpunit": "^8.0"
+                "php": "^7.2.5|^8.0"
             },
             "type": "library",
             "extra": {
@@ -1211,9 +1254,9 @@
             ],
             "support": {
                 "issues": "https://github.com/laravel/ui/issues",
-                "source": "https://github.com/laravel/ui/tree/v2.4.1"
+                "source": "https://github.com/laravel/ui/tree/v2.5.0"
             },
-            "time": "2020-09-22T16:51:51+00:00"
+            "time": "2020-11-03T19:45:19+00:00"
         },
         {
             "name": "laravelcollective/html",

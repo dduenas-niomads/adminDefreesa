@@ -11,26 +11,21 @@
     var arrayCategories = [];
     var categoryId = 0;
     $(document).ready(function (e) {
-   
-   $.ajaxSetup({
-       headers: {
-           'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-   });
-  
-   $('#file').change(function(){
-           
-    let reader = new FileReader();
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+        });        
+        $('#file').change(function(){
+            let reader = new FileReader();
+            reader.onload = (e) => {
+                $('#editModalImg').attr('src', e.target.result);
+                $('#editModalImg').attr('width', "50px");
+            }
+            reader.readAsDataURL(this.files[0]); 
+        });
+    });
 
-    reader.onload = (e) => { 
-
-      $('#image_preview_container').attr('src', e.target.result); 
-    }
-
-    reader.readAsDataURL(this.files[0]); 
-  
-   });
-});
     $(function () {
         $("#example1").DataTable({
             "info": true,
