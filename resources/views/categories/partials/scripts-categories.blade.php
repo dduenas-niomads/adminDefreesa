@@ -16,11 +16,27 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
         });        
-        $('#file').change(function(){
+        $('#updateFile').change(function(){
             let reader = new FileReader();
             reader.onload = (e) => {
                 $('#editModalImg').attr('src', e.target.result);
                 $('#editModalImg').attr('width', "50px");
+            }
+            reader.readAsDataURL(this.files[0]); 
+        });
+    });
+
+    $(document).ready(function (e) {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+        });        
+        $('#createFile').change(function(){
+            let reader = new FileReader();
+            reader.onload = (e) => {
+                $('#image_preview_container').attr('src', e.target.result);
+                $('#image_preview_container').attr('width', "50px");
             }
             reader.readAsDataURL(this.files[0]); 
         });
