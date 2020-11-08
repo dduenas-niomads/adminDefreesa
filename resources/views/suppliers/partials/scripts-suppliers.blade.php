@@ -47,7 +47,7 @@
         $("#example1").DataTable({
             "info": true,
             "scrollX": false,
-            "ordering": true,
+            "ordering": false,
             "searching": true,
             "processing": true,
             "serverSide": true,
