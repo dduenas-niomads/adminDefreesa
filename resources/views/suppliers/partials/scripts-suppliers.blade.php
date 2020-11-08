@@ -82,7 +82,7 @@
                     return '<a href="' + data.url_image + '" target="_blank"><img src="' + data.url_image + '" height="50px"></a>';
                 }, "orderable": false},
                 {'data':   function (data) {
-                    return data.bs_categories_id;
+                    return data.category.name;
                 }},
                 {'data':   function (data) {
                     return data.name;
