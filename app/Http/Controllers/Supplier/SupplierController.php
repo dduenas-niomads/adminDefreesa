@@ -32,7 +32,6 @@ class SupplierController extends Controller
     {
         $params = $request->all();
         $notification = true;
-        dd($params);
         $categories = ApiCategoryController::getListSimple();
         $result = ApiSupplierController::update(isset($params['id']) ? (int)$params['id'] : null, $params);
         $view = view('suppliers.suppliers', compact('notification', 'categories', 'result'));
@@ -53,7 +52,6 @@ class SupplierController extends Controller
     {
         $params = $request->all();
         $notification = true;
-        dd($params);
         $categories = ApiCategoryController::getListSimple();
         $result = ApiSupplierController::create($params);
         $view = view('suppliers.suppliers', compact('notification', 'categories', 'result'));
