@@ -115,10 +115,10 @@
             if (infoModalBody != null) {
                 // innerHTML
                 document.getElementById('infoModalCreatedAt').innerHTML = arraySuppliers[supplierId].created_at;
-                document.getElementById('infoModalUpdatedAt').innerHTML = arraySuppliers[supplierId].updated_at;
+                // document.getElementById('infoModalUpdatedAt').innerHTML = arraySuppliers[supplierId].updated_at;
                 $("#infoModalImg").attr("src", arraySuppliers[supplierId].url_image);
                 // input value
-                document.getElementById('infoModalCatName').value = arraySuppliers[supplierId].bs_categories_id;
+                document.getElementById('infoModalCatName').value = arraySuppliers[supplierId].category.name;
                 document.getElementById('infoModalName').value = arraySuppliers[supplierId].name;
                 document.getElementById('infoModalDescription').value = arraySuppliers[supplierId].description;
                 document.getElementById('infoModalFlagActive').value = arraySuppliers[supplierId].flag_active;
@@ -130,8 +130,8 @@
             var editModalBody = document.getElementById('editModalBody');
             if (editModalBody != null) {
                 // innerHTML
-                document.getElementById('editModalCreatedAt').innerHTML = arraySuppliers[supplierId].created_at;
-                document.getElementById('editModalUpdatedAt').innerHTML = arraySuppliers[supplierId].updated_at;
+                // document.getElementById('editModalCreatedAt').innerHTML = arraySuppliers[supplierId].created_at;
+                // document.getElementById('editModalUpdatedAt').innerHTML = arraySuppliers[supplierId].updated_at;
                 $("#editModalImg").attr("src", arraySuppliers[supplierId].url_image);
                 // input value
                 document.getElementById('editModalId').value = supplierId;

@@ -111,7 +111,7 @@
             if (infoModalBody != null) {
                 // innerHTML
                 document.getElementById('infoModalCreatedAt').innerHTML = arrayCategories[categoryId].created_at;
-                document.getElementById('infoModalUpdatedAt').innerHTML = arrayCategories[categoryId].updated_at;
+                // document.getElementById('infoModalUpdatedAt').innerHTML = arrayCategories[categoryId].updated_at;
                 $("#infoModalImg").attr("src", arrayCategories[categoryId].url_image);
                 // input value
                 document.getElementById('infoModalName').value = arrayCategories[categoryId].name;
@@ -126,7 +126,7 @@
             if (editModalBody != null) {
                 // innerHTML
                 document.getElementById('editModalCreatedAt').innerHTML = arrayCategories[categoryId].created_at;
-                document.getElementById('editModalUpdatedAt').innerHTML = arrayCategories[categoryId].updated_at;
+                // document.getElementById('editModalUpdatedAt').innerHTML = arrayCategories[categoryId].updated_at;
                 $("#editModalImg").attr("src", arrayCategories[categoryId].url_image);
                 // input value
                 document.getElementById('editModalId').value = categoryId;

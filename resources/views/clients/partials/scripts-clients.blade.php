@@ -11,54 +11,58 @@
   var arrayClients = [];
   var clientId = 0;
   $(function () {
-    $("#example1").DataTable({
+  $("#example1").DataTable({
       "info": true,
       "scrollX": false,
+      "ordering": true,
+      "searching": true,
       "processing": true,
+      "serverSide": true,
       "lengthChange": false,
+      "bPaginate": true,
+      "responsive": false,
       "language": {
           "url": "/js/languages/datatables/es.json"
       },
       "order": [[ 0, "asc" ]],
-      "bPaginate": true,
-      "ordering": true,
-      "searching": true,
-      "responsive": true,
       "ajax": function(data, callback, settings) {
-        $.get('/api/clients', {
-            limit: data.length,
-            offset: data.start,
+          $.get('/api/clients', {
+              limit: data.length,
+              offset: data.start,
+              order: data.order,
+              search: data.search,
+              all: 1
           }, function(res) {
-            arrayClients = [];
-            res.data.forEach(element => {
+              arrayClients = [];
+              res.data.forEach(element => {
               arrayClients[element.id] = element;
-            });
-            callback({
-                recordsTotal: res.total,
-                recordsFiltered: res.total,
-                data: res.data
-            });
-        });
+              });
+              callback({
+                  recordsTotal: res.total,
+                  recordsFiltered: res.total,
+                  data: res.data
+              });
+          });
       },
       "columns"    : [
           {'data':   function (data) {
-            return data.user_name;
+            return data.name;
           }},
           {'data':   function (data) {
-            return data.user_lastname;
+            return data.lastname;
           }},
           {'data':   function (data) {
-            return data.user_document_number;
+            return data.document_number;
           }},
           {'data':   function (data) {
-            return data.last_purchase;
+            return 0;
           }},
           {'data':   function (data) {
-            return data.total_purchases;
+            return 0;
           }},
           {'data':   function (data) {
             var message = "Activa";
-            if (data.flag_active != 1) {
+            if (data.active != 1) {
               message = "Inactiva";
             }
             return message;

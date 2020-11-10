@@ -22,25 +22,25 @@ class ApiClientController extends Controller
         $columnName = null;
         switch ($order) {
             case 0:
-                $columnName = 'user_name';
+                $columnName = 'name';
                 break;
             case 1:
-                $columnName = 'user_lastname';
+                $columnName = 'lastname';
                 break;
             case 2:
-                $columnName = 'user_document_number';
+                $columnName = 'email';
                 break;
             case 3:
-                $columnName = 'last_purchase';
+                $columnName = 'phone';
                 break;
             case 4:
-                $columnName = 'total_purchases';
+                $columnName = 'document_number';
             break;
             case 5:
                 $columnName = 'flag_active';
                 break;
             default:
-                $columnName = 'user_name';
+                $columnName = 'name';
                 break;
         }
         return $columnName;
@@ -62,7 +62,7 @@ class ApiClientController extends Controller
         if (Auth::user()) {
             $params = $request->all();
             $params['order'] = self::optimizeOrder(isset($params['order']) ? $params['order'] : null);
-            $response = self::getListParent($params, Auth::user()->role['code'] . '/clients');
+            $response = self::getListParent($params, 'user/list', '&all=1');
             if (isset($response['body'])) {
                 $response = $response['body'];
             }

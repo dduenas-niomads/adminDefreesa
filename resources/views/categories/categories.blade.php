@@ -57,9 +57,9 @@
 											<li class="list-group-item-warehouses">
 												<b>Fecha de creación</b> <br> <a class="float-left" id="infoModalCreatedAt"></a>
 											</li>
-											<li class="list-group-item-warehouses">
+											<!-- <li class="list-group-item-warehouses">
 												<b>Última actualización</b> <br> <a class="float-left" id="infoModalUpdatedAt"></a>
-											</li>
+											</li> -->
 										</ul>
 									</div>
 								</div>
@@ -127,9 +127,9 @@
 										<li class="list-group-item-warehouses">
 											<b>Fecha de creación</b> <br> <a class="float-left" id="editModalCreatedAt"></a>
 										</li>
-										<li class="list-group-item-warehouses">
+										<!-- <li class="list-group-item-warehouses">
 											<b>Última actualización</b> <br> <a class="float-left" id="editModalUpdatedAt"></a>
-										</li>
+										</li> -->
 									</ul>
 								</div>
 							</div>
