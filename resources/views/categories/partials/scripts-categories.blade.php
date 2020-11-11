@@ -140,7 +140,7 @@
                 document.getElementById('editModalId').value = categoryId;
                 document.getElementById('editModalName').value = arrayCategories[categoryId].name;
                 document.getElementById('editModalDescription').value = arrayCategories[categoryId].description;
-                document.getElementById('infoModalFlagCourier').value = arrayCategories[categoryId].flag_courier;
+                document.getElementById('editModalFlagCourier').value = arrayCategories[categoryId].flag_courier;
                 document.getElementById('editModalFlagActive').value = arrayCategories[categoryId].flag_active;
             }
             $('#modal-edit').modal({ backdrop: 'static', keyboard: false });
