@@ -70,6 +70,7 @@ class CategoryController extends Controller
     {
         $params = $request->all();
         $notification = true;
+        $params['url_image'] = $this->uploadImage($params['file']);
         $result = ApiCategoryController::create($params);
         $view = view('categories.categories', compact('notification', 'result'));
         return $view;

@@ -33,7 +33,7 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
         });        
-        $('#createFile').change(function(){
+        $('#newFile').change(function(){
             let reader = new FileReader();
             reader.onload = (e) => {
                 $('#image_preview_container').attr('src', e.target.result);
@@ -130,7 +130,7 @@
             var editModalBody = document.getElementById('editModalBody');
             if (editModalBody != null) {
                 // innerHTML
-                // document.getElementById('editModalCreatedAt').innerHTML = arraySuppliers[supplierId].created_at;
+                document.getElementById('editModalCreatedAt').innerHTML = arraySuppliers[supplierId].created_at;
                 // document.getElementById('editModalUpdatedAt').innerHTML = arraySuppliers[supplierId].updated_at;
                 $("#editModalImg").attr("src", arraySuppliers[supplierId].url_image);
                 // input value
