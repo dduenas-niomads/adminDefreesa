@@ -67,8 +67,8 @@ return [
 
         'obs' => [
             'driver' => 'obs',
-            'key' => 'x', // <Your Huawei OBS AccessKeyId>
-            'secret' => 'xx', // <Your Huawei OBS AccessKeySecret>
+            'key' => env('OBS_API_KEY'), // <Your Huawei OBS AccessKeyId>
+            'secret' => env('OBS_SECRET_KEY'), // <Your Huawei OBS AccessKeySecret>
             'bucket' => 'niomads-dev', // <OBS bucket name>
             'region' => 'ap-southeast-1',
             'endpoint' => 'https://obs.ap-southeast-1.myhuaweicloud.com', // <the endpoint of OBS, E.g: (https:// or http://).obs.cn-east-2.myhuaweicloud.com | custom domain, E.g:img.abc.com> OBS 外网节点或自定义外部域名

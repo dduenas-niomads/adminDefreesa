@@ -8,7 +8,6 @@ use App\Http\Controllers\Category\ApiCategoryController;
 use Auth;
 use Carbon\Carbon;
 use Symfony\Component\HttpFoundation\Response;
-use Illuminate\Support\Facades\Storage;
 
 class CategoryController extends Controller
 {
@@ -52,6 +51,7 @@ class CategoryController extends Controller
     {
         $params = $request->all();
         $notification = true;
+        $params['url_image'] = $this->uploadImage($params['file']);
         $result = ApiCategoryController::update(isset($params['id']) ? (int)$params['id'] : null, $params);
         $view = view('categories.categories', compact('notification', 'result'));
         return $view;

@@ -7,6 +7,7 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Http as HttpClient;
+use Illuminate\Support\Facades\Storage;
 use Auth;
 
 class Controller extends BaseController
@@ -47,5 +48,20 @@ class Controller extends BaseController
     public static function superAdminRole()
     {
         return Auth::user() && Auth::user()->role['code'] === 'super-admin';
+    }
+
+    public function uploadImage($fileContents)
+    {
+        $disk = Storage::disk('obs');
+
+        // create a file
+        $upload = $disk->put('defreesa', $fileContents);
+
+        // get file url
+        if (!is_null($upload)) {
+            return env('URL_OBS') . $upload;
+        } else {
+            return null;
+        }
     }
 }
