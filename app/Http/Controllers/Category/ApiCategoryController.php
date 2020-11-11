@@ -29,10 +29,13 @@ class ApiCategoryController extends Controller
                 break;
             case 2:
                 $columnName = 'description';
-            break;
-            case 3:
-                $columnName = 'flag_active';
                 break;
+            case 3:
+                $columnName = 'flag_courier';
+                break;
+            case 4:
+                $columnName = 'flag_active';
+                break;                
             default:
                 $columnName = 'name';
                 break;

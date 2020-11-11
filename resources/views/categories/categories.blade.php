@@ -30,6 +30,7 @@
                                 <th>Imagen</th>
                                 <th>Nombre</th>
                                 <th>Descripción</th>
+                                <th>Es Courier?</th>
                                 <th>Estado</th>
                                 <th>Opciones</th>
                             </tr>
@@ -83,6 +84,15 @@
 													</div>
 												</div>
 												<div class="form-group row">
+													<label class="col-sm-3 col-form-label">Es Courier?</label>
+													<div class="col-sm-9">
+														<select id="infoModalFlagCourier" class="custom-select" disabled>
+															<option value="1">SÍ</option>
+															<option value="0">NO</option>
+														</select>
+													</div>
+												</div>												
+												<div class="form-group row">
 													<label class="col-sm-3 col-form-label">Estado</label>
 													<div class="col-sm-9">
 														<select id="infoModalFlagActive" class="custom-select" disabled>
@@ -90,7 +100,7 @@
 															<option value="0">INACTIVO</option>
 														</select>
 													</div>
-												</div>
+												</div>												
 											</div>
 										</div>
 										<!-- /.tab-content -->
@@ -162,6 +172,15 @@
 												</div>
 											</div>
 											<div class="form-group row">
+												<label class="col-sm-3 col-form-label">Es Courier?</label>
+												<div class="col-sm-9">
+													<select name="flag_courier" id="editModalFlagCourier" class="custom-select">
+														<option value="1">SÍ</option>
+														<option value="0">NO</option>
+													</select>
+												</div>
+											</div>											
+											<div class="form-group row">
 												<label class="col-sm-3 col-form-label">Estado</label>
 												<div class="col-sm-9">
 													<select name="flag_active" id="editModalFlagActive" class="custom-select">
@@ -228,6 +247,15 @@
 													<input type="text" class="form-control" placeholder="Descripción" name="description" id="newModalDescription" onClick="this.select();" autocomplete="off" maxlength="200">
 												</div>
 											</div>
+											<div class="form-group row">
+												<label class="col-sm-3 col-form-label">Es Courier?</label>
+												<div class="col-sm-9">
+													<select name="flag_courier" id="newModalFlagCourier" class="custom-select">
+														<option value="1">SÍ</option>
+														<option value="0">NO</option>
+													</select>
+												</div>
+											</div>											
 											<div class="form-group row">
 												<label class="col-sm-3 col-form-label">Estado</label>
 												<div class="col-sm-9">

@@ -87,6 +87,13 @@
                     return data.description;
                 }},
                 {'data':   function (data) {
+                    var message = "Sí";
+                    if (data.flag_courier != 1) {
+                    message = "No";
+                    }
+                    return message;
+                }},                
+                {'data':   function (data) {
                     var message = "Activo";
                     if (data.flag_active != 1) {
                     message = "Inactivo";
@@ -116,6 +123,7 @@
                 // input value
                 document.getElementById('infoModalName').value = arrayCategories[categoryId].name;
                 document.getElementById('infoModalDescription').value = arrayCategories[categoryId].description;
+                document.getElementById('infoModalFlagCourier').value = arrayCategories[categoryId].flag_courier;
                 document.getElementById('infoModalFlagActive').value = arrayCategories[categoryId].flag_active;
             }
             $('#modal-info').modal({ backdrop: 'static', keyboard: false });
@@ -132,6 +140,7 @@
                 document.getElementById('editModalId').value = categoryId;
                 document.getElementById('editModalName').value = arrayCategories[categoryId].name;
                 document.getElementById('editModalDescription').value = arrayCategories[categoryId].description;
+                document.getElementById('infoModalFlagCourier').value = arrayCategories[categoryId].flag_courier;
                 document.getElementById('editModalFlagActive').value = arrayCategories[categoryId].flag_active;
             }
             $('#modal-edit').modal({ backdrop: 'static', keyboard: false });
