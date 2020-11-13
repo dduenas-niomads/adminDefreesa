@@ -51,10 +51,9 @@ class CategoryController extends Controller
     {
         $params = $request->all();
         $notification = true;
-        $urlImage = $this->uploadImage(isset($params['file']) ? $params['file'] : null);
-        if (!is_null($urlImage)) {
-            $params ['url_image'] = $urlImage;
-            }        
+        if (isset($params['file'])) {
+            $params['url_image'] = $this->uploadImage($params['file'], "defreesa/categories");
+        }
         $result = ApiCategoryController::update(isset($params['id']) ? (int)$params['id'] : null, $params);
         $view = view('categories.categories', compact('notification', 'result'));
         return $view;
