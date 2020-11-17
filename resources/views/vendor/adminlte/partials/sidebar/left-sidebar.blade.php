@@ -61,7 +61,7 @@
             </ul>
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu">
                 <li class="nav-item">
-                    <a href="/delivery-man" class="nav-link  @yield('nav-delivery-man')">
+                    <a href="/delivery-users" class="nav-link  @yield('nav-delivery-users')">
                         <i class="fa fa-motorcycle nav-icon "></i>
                         <p>Repartidores</p>
                     </a>

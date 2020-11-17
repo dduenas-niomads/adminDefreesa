@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Client;
+namespace App\Http\Controllers\DeliveryUser;
 
 use Illuminate\Support\Facades\Http as HttpClient;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Auth;
 
-class ApiClientController extends Controller
+class ApiDeliveryUserController extends Controller
 {
     /**
      * Create a new api controller instance.
@@ -28,15 +28,12 @@ class ApiClientController extends Controller
                 $columnName = 'lastname';
                 break;
             case 2:
-                $columnName = 'document_number';
+                $columnName = 'email';
                 break;
             case 3:
-                $columnName = 'last_purchase';
+                $columnName = 'document_number';
                 break;
             case 4:
-                $columnName = 'total_purchase';
-            break;
-            case 5:
                 $columnName = 'active';
                 break;
             default:
@@ -62,7 +59,7 @@ class ApiClientController extends Controller
         if (Auth::user()) {
             $params = $request->all();
             $params['order'] = self::optimizeOrder(isset($params['order']) ? $params['order'] : null);
-            $response = self::getListParent($params, 'consumers', '&all=1');
+            $response = self::getListParent($params, 'delivery-user', '&all=1');
             if (isset($response['body'])) {
                 $response = $response['body'];
             }

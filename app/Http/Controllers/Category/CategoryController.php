@@ -54,7 +54,8 @@ class CategoryController extends Controller
         $urlImage = $this->uploadImage(isset($params['file']) ? $params['file'] : null);
         if (!is_null($urlImage)) {
             $params ['url_image'] = $urlImage;
-            }        
+            }      
+        dd($params);      
         $result = ApiCategoryController::update(isset($params['id']) ? (int)$params['id'] : null, $params);
         $view = view('categories.categories', compact('notification', 'result'));
         return $view;

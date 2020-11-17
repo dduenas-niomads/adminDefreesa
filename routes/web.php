@@ -76,6 +76,8 @@ Route::post('/upload', 'Supplier\SupplierController@uploadFile')->name('uploadfi
 Route::get('/clients', 'Client\ClientController@index')->name('clients');
 Route::get('/clients/edit/{id}', 'Client\ClientController@edit')->name('client-edit');
 Route::put('/clients/{id}', 'Client\ClientController@update')->name('update-client');
+// DeliveryUsers
+Route::get('/delivery-users', 'DeliveryUser\DeliveryUserController@index')->name('delivery-users');
 // Orders
 Route::get('/orders', 'Order\OrderController@index')->name('orders');
 Route::get('/orders/edit/{id}', 'Order\OrderController@edit')->name('order-edit');
