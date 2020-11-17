@@ -152,7 +152,7 @@
 											<div class="form-group row">
 												<label class="col-sm-3 col-form-label">Imagen</label>
 												<div class="col-sm-9">
-													<input type="file" placeholder="Elegir imagen" id="updateFile">
+													<input type="file" name="file" placeholder="Elegir imagen" id="updateFile">
 													<span class="text-danger">{{ $errors->first('title') }}</span>
 												</div>
 											</div>
@@ -228,7 +228,7 @@
 												</div>
 												<div class="col-sm-3 col-form-label">
 													<div class="form-group">
-														<input type="file" placeholder="Elegir imagen" id="createFile">
+														<input type="file" name="file" placeholder="Elegir imagen" id="createFile">
 														<span class="text-danger">{{ $errors->first('title') }}</span>
 													</div>
 												</div>
