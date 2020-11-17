@@ -50,12 +50,12 @@ class Controller extends BaseController
         return Auth::user() && Auth::user()->role['code'] === 'super-admin';
     }
 
-    public function uploadImage($fileContents)
+    public function uploadImage($fileContents, $path = "defreesa/others")
     {
         $disk = Storage::disk('obs');
 
         // create a file
-        $upload = $disk->put('defreesa', $fileContents);
+        $upload = $disk->put($path, $fileContents);
 
         // get file url
         if (!is_null($upload)) {
