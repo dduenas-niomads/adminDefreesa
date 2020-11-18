@@ -32,7 +32,7 @@
                                 <th>Descripción</th>
                                 <th>Es Courier?</th>
                                 <th>Estado</th>
-                                <th>Opciones</th>
+                                <th width="20%">Opciones</th>
                             </tr>
                         </thead>
                     </table>

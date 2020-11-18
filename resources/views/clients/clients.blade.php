@@ -24,7 +24,7 @@
 								<th>Última compra</th>
 								<th>Total de compras</th>
 								<th>Estado</th>
-								<th>Opciones</th>
+                                <th width="20%">Opciones</th>
 							</tr>
 						</thead>
 					</table>

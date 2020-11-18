@@ -55,7 +55,7 @@
                 <li class="nav-item">
                     <a href="/suppliers" class="nav-link  @yield('nav-suppliers')">
                         <i class="fa fa-store-alt nav-icon "></i>
-                        <p>Proveedores</p>
+                        <p>Locales afiliados</p>
                     </a>
                 </li>
             </ul>
@@ -75,7 +75,7 @@
                     </a>
                 </li>
             </ul>
-            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu">
+            <!-- <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu">
                 <li class="nav-item">
                     <a href="/orders" class="nav-link  @yield('nav-orders')">
                         <i class="fa fa-clipboard-check nav-icon "></i>
@@ -98,7 +98,7 @@
                         <p>Soporte técnico</p>
                     </a>
                 </li>
-            </ul>
+            </ul> -->
         </nav>
         <!-- /.sidebar-menu -->
         <nav class="mt-2" style=" bottom: 0;">

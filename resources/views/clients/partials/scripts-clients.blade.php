@@ -69,10 +69,9 @@
           }},
           {'data':   function (data) {
             return '<div class="col-md-12 row">' + 
-              '<div class="col-md-3"><button type="button" onClick="openMessageModal(' + data.id + ');" class="btn btn-block btn-outline-secondary"><i class="far fa-envelope"></i></button></div>' +
-              '<div class="col-md-3"><button type="button" onClick="openInfoModal(' + data.id + ');" class="btn btn-block btn-outline-info"><i class="fas fa-info"></i></button></div>' +
-              '<div class="col-md-3"><button type="button" onClick="openEditModal(' + data.id + ');" class="btn btn-block btn-outline-warning"><i class="fas fa-edit"></i></button></div>' +
-              '<div class="col-md-3"><button type="button" onClick="openDeactivateModal(' + data.id + ');" class="btn btn-block btn-outline-danger"><i class="fas fa-trash-alt"></i></button></div>' +
+              '<div class="col-md-4"><button type="button" onClick="openInfoModal(' + data.id + ');" class="btn btn-block btn-outline-info"><i class="fas fa-info"></i></button></div>' +
+              '<div class="col-md-4"><button type="button" onClick="openEditModal(' + data.id + ');" class="btn btn-block btn-outline-warning"><i class="fas fa-edit"></i></button></div>' +
+              '<div class="col-md-4"><button type="button" onClick="openDeactivateModal(' + data.id + ');" class="btn btn-block btn-outline-danger"><i class="fas fa-trash-alt"></i></button></div>' +
               '</div>';
           }, "orderable": false},
       ],

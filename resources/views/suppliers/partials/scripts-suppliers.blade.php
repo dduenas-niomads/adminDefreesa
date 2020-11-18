@@ -79,7 +79,7 @@
             },
             "columns" : [
                 {'data':   function (data) {
-                    return '<a href="' + data.url_image + '" target="_blank"><img src="' + data.url_image + '" height="50px"></a>';
+                    return '<a href="' + data.url_image + '" target="_blank"><img src="' + data.url_image + '" width="50px"></a>';
                 }, "orderable": false},
                 {'data':   function (data) {
                     return data.category.name;

@@ -7,7 +7,7 @@
 @stop
 
 @section('content_header')
-	<h1 class="m-0 text-dark">Mis proveedores <button type="button" onClick="openNewModal();" class="btn btn-outline-success">Nuevo proveedor</button> </h1> 
+	<h1 class="m-0 text-dark">Locales afiliados <button type="button" onClick="openNewModal();" class="btn btn-outline-success">Nuevo proveedor</button> </h1> 
 @stop
 
 @section('content')
@@ -32,7 +32,7 @@
                                 <th>Nombre</th>
                                 <th>Descripción</th>
                                 <th>Estado</th>
-                                <th>Opciones</th>
+                                <th width="20%">Opciones</th>
                             </tr>
                         </thead>
                     </table>

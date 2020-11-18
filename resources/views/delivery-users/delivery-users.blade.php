@@ -23,7 +23,7 @@
 								<th>Email</th>
 								<th>Documento</th>
 								<th>Estado</th>
-								<th>Opciones</th>
+                                <th width="20%">Opciones</th>
 							</tr>
 						</thead>
 					</table>
