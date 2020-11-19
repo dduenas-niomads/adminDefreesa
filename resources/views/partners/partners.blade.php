@@ -138,5 +138,5 @@
 @stop
 
 @section('scripts')
-    @include('clients.partials.scripts-clients')
+    @include('partners.partials.scripts-partners')
 @stop
