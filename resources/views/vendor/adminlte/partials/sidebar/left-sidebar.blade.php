@@ -36,7 +36,7 @@
                         </li>
                         <li class="nav-item">
                             <a href="/my-account" class="nav-link @yield('nav-account')">
-                                <i class="far fa-circle nav-icon"></i>
+                                <i class="far fa-id-card nav-icon"></i>
                                 <p>Mi cuenta</p>
                             </a>
                         </li>
@@ -60,6 +60,47 @@
                 </li>
             </ul>
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu">
+                <!-- Add icons to the links using the .nav-icon class
+                    with font-awesome or any other icon font library -->
+                <li class="nav-item has-treeview @yield('nav-users-menu')">
+                    <a href="#" class="nav-link @yield('nav-users')">
+                        <i class="nav-icon fas fa-users"></i>
+                        <p>
+                            Usuarios
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="/partners" class="nav-link  @yield('nav-partners')">
+                                <i class="fa fa-handshake nav-icon "></i>
+                                <p>Partners</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/delivery-users" class="nav-link  @yield('nav-delivery-users')">
+                                <i class="fa fa-motorcycle nav-icon "></i>
+                                <p>Repartidores</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/clients" class="nav-link  @yield('nav-clients')">
+                                <i class="fa fa-heart nav-icon "></i>
+                                <p>Consumidores</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <!-- <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu">
+                <li class="nav-item">
+                    <a href="/partners" class="nav-link  @yield('nav-partners')">
+                        <i class="fa fa-handshake nav-icon "></i>
+                        <p>Partners</p>
+                    </a>
+                </li>
+            </ul>            
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu">
                 <li class="nav-item">
                     <a href="/delivery-users" class="nav-link  @yield('nav-delivery-users')">
                         <i class="fa fa-motorcycle nav-icon "></i>
@@ -74,7 +115,7 @@
                         <p>Consumidores</p>
                     </a>
                 </li>
-            </ul>
+            </ul> -->
             <!-- <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu">
                 <li class="nav-item">
                     <a href="/orders" class="nav-link  @yield('nav-orders')">

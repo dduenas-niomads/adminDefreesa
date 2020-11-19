@@ -76,19 +76,17 @@
           }, "orderable": false},
       ],
     });
-    openMessageModal = function(id) {
-      clientId = id;
-      var messageModalBody = document.getElementById('messageModalBody');
-      if (messageModalBody != null) {
-        messageModalBody.innerHTML = "<p>Mensaje a cliente: " + clientId + "</p>"; 
-      }
-      $('#modal-message').modal({ backdrop: 'static', keyboard: false });
-    }
     openInfoModal = function(id) {
       clientId = id;
       var infoModalBody = document.getElementById('infoModalBody');
       if (infoModalBody != null) {
-        infoModalBody.innerHTML = "<p>Detalles de cliente: " + clientId + "</p>"; 
+          // input value
+          document.getElementById('infoModalName').value = arrayClients[clientId].name;
+          document.getElementById('infoModalLastname').value = arrayClients[clientId].lastname;
+          document.getElementById('infoModalDocument').value = arrayClients[clientId].document_number;
+          document.getElementById('infoModalLastPurchase').value = "0";
+          document.getElementById('infoModalTotalPurchase').value = "0";
+          document.getElementById('infoModalFlagActive').value = arrayClients[clientId].active;
       }
       $('#modal-info').modal({ backdrop: 'static', keyboard: false });
     }

@@ -148,7 +148,7 @@
             if (deleteModalBody != null) {
                 // input value
                 document.getElementById('deleteModalId').value = supplierId;
-                deleteModalBody.innerHTML = "<p>Desea eliminar el proveedor: <b>" + arraySuppliers[supplierId].name + "</b>?</p>"; 
+                deleteModalBody.innerHTML = "<p>Desea eliminar el local afiliado: <b>" + arraySuppliers[supplierId].name + "</b>?</p>"; 
             }
             $('#modal-delete').modal({ backdrop: 'static', keyboard: false });
         }

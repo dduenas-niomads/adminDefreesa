@@ -10,12 +10,12 @@
     active
 @stop
 
-@section('nav-clients')
+@section('nav-partners')
     active
 @stop
 
 @section('content_header')
-    <h1 class="m-0 text-dark">Mis clientes</h1>
+    <h1 class="m-0 text-dark">Mis partners</h1>
 @stop
 
 @section('content')
@@ -26,11 +26,10 @@
 					<table id="example1" class="table table-bordered table-hover dataTable dtr-inline" role="grid" aria-describedby="example2_info">
 						<thead>
 							<tr role="row">
-								<th>Nombres</th>
-								<th>Apellidos</th>
-								<th>Documento</th>
-								<th>Última compra</th>
-								<th>Total de compras</th>
+								<th>Nombre</th>
+								<th>Ruc</th>
+								<th>Dirección</th>
+								<th>Teléfono</th>
 								<th>Estado</th>
                                 <th width="20%">Opciones</th>
 							</tr>
@@ -43,7 +42,7 @@
 			<div class="modal-dialog modal-lg">
 				<div class="modal-content">
 					<div class="modal-header">
-						<h4 class="modal-title">Información de consumidor</h4>
+						<h4 class="modal-title">Información de partner</h4>
 					</div>
 					<div class="modal-body" id="infoModalBody">
 						<div class="row">
@@ -53,33 +52,27 @@
 										<!-- /.tab-pane -->
 										<div class="active tab-pane" id="info">
 											<div class="form-group row">
-												<label class="col-sm-3 col-form-label">Nombres</label>
+												<label class="col-sm-3 col-form-label">Nombre</label>
 												<div class="col-sm-9">
 													<input type="text" class="form-control" placeholder="Nombre" id="infoModalName" readonly>
 												</div>
 											</div>
 											<div class="form-group row">
-												<label class="col-sm-3 col-form-label">Apellidos</label>
+												<label class="col-sm-3 col-form-label">RUC</label>
 												<div class="col-sm-9">
-													<input type="text" class="form-control" placeholder="Apellidos" id="infoModalLastname" readonly>
+													<input type="text" class="form-control" placeholder="RUC" id="infoModalRuc" readonly>
 												</div>
 											</div>
 											<div class="form-group row">
-												<label class="col-sm-3 col-form-label">Documento</label>
+												<label class="col-sm-3 col-form-label">Dirección</label>
 												<div class="col-sm-9">
-													<input type="text" class="form-control" placeholder="Email" id="infoModalDocument" readonly>
+													<input type="text" class="form-control" placeholder="Dirección" id="infoModalAddress" readonly>
 												</div>
 											</div>
 											<div class="form-group row">
-												<label class="col-sm-3 col-form-label">Última Compra</label>
+												<label class="col-sm-3 col-form-label">Teléfono</label>
 												<div class="col-sm-9">
-													<input type="text" class="form-control" placeholder="Última Compra" id="infoModalLastPurchase" readonly>
-												</div>
-											</div>
-											<div class="form-group row">
-												<label class="col-sm-3 col-form-label">Total Compras</label>
-												<div class="col-sm-9">
-													<input type="text" class="form-control" placeholder="Total Compras" id="infoModalTotalPurchase" readonly>
+													<input type="text" class="form-control" placeholder="Teléfono" id="infoModalPhone" readonly>
 												</div>
 											</div>																																				
 											<div class="form-group row">
@@ -100,7 +93,7 @@
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-default pull-left" data-dismiss="modal">Regresar</button>
-						<button type="button" class="btn btn-info" onClick="goToEditModal();">Editar consumidor</button>
+						<button type="button" class="btn btn-info" onClick="goToEditModal();">Editar partner</button>
 					</div>
 				</div>
 				<!-- /.modal-content -->
@@ -134,7 +127,7 @@
 				</div>
 				<div class="modal-footer">
 				<button type="button" class="btn btn-default pull-left" data-dismiss="modal">Regresar</button>
-				<button type="button" class="btn btn-danger">Eliminar cliente</button>
+				<button type="button" class="btn btn-danger">Eliminar partner</button>
 				</div>
 			</div>
 			<!-- /.modal-content -->

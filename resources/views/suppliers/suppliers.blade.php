@@ -7,7 +7,7 @@
 @stop
 
 @section('content_header')
-	<h1 class="m-0 text-dark">Locales afiliados <button type="button" onClick="openNewModal();" class="btn btn-outline-success">Nuevo proveedor</button> </h1> 
+	<h1 class="m-0 text-dark">Locales afiliados <button type="button" onClick="openNewModal();" class="btn btn-outline-success">Nuevo local afiliado</button> </h1> 
 @stop
 
 @section('content')
@@ -43,7 +43,7 @@
 			<div class="modal-dialog modal-lg">
 				<div class="modal-content">
 					<div class="modal-header">
-						<h4 class="modal-title">Información de proveedor</h4>
+						<h4 class="modal-title">Información de local afiliado</h4>
 					</div>
 					<div class="modal-body" id="infoModalBody">
 						<div class="row">
@@ -108,7 +108,7 @@
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-default pull-left" data-dismiss="modal">Regresar</button>
-						<button type="button" class="btn btn-info" onClick="goToEditModal();">Editar proveedor</button>
+						<button type="button" class="btn btn-info" onClick="goToEditModal();">Editar local afiliado</button>
 					</div>
 				</div>
 				<!-- /.modal-content -->
@@ -119,7 +119,7 @@
 			<div class="modal-dialog modal-lg">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h4 class="modal-title">Cambiar datos de proveedor</h4>
+					<h4 class="modal-title">Cambiar datos de local afiliado</h4>
 				</div>
 				<div class="modal-body" id="editModalBody">
 					<div class="row">
@@ -209,7 +209,7 @@
 			<div class="modal-dialog modal-lg">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h4 class="modal-title">Crear nuevo proveedor</h4>
+					<h4 class="modal-title">Crear nuevo local afiliado</h4>
 				</div>
 				<div class="modal-body" id="newModalBody">
 					<div class="row">
@@ -286,7 +286,7 @@
 			<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-				<h4 class="modal-title">Eliminar proveedor</h4>
+				<h4 class="modal-title">Eliminar local afiliado</h4>
 				</div>
 				<div class="modal-body" id="deleteModalBody">
 				</div>

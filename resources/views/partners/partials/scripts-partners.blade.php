@@ -8,8 +8,8 @@
 <script src="{{ asset('scripts/datatables/responsive.bootstrap4.min.js') }}"></script>
 <!-- functions -->
 <script>
-  var arrayDeliveryUsers = [];
-  var deliveryUserId = 0;
+  var arrayPartners = [];
+  var partnerId = 0;
   $(function () {
   $("#example1").DataTable({
       "info": true,
@@ -26,16 +26,16 @@
       },
       "order": [[ 0, "asc" ]],
       "ajax": function(data, callback, settings) {
-          $.get('/api/delivery-users', {
+          $.get('/api/partners', {
               limit: data.length,
               offset: data.start,
               order: data.order,
               search: data.search,
               all: 1
           }, function(res) {
-              arrayDeliveryUsers = [];
+              arrayPartners = [];
               res.data.forEach(element => {
-              arrayDeliveryUsers[element.id] = element;
+              arrayPartners[element.id] = element;
               });
               callback({
                   recordsTotal: res.total,
@@ -49,13 +49,13 @@
             return data.name;
           }},
           {'data':   function (data) {
-            return data.lastname;
+            return data.ruc;
           }},
           {'data':   function (data) {
-            return data.email;
+            return data.address_info;
           }},
           {'data':   function (data) {
-            return data.document_number;
+            return data.phone;
           }},
           {'data':   function (data) {
             var message = "Activo";
@@ -73,44 +73,32 @@
           }, "orderable": false},
       ],
     });
-    openMessageModal = function(id) {
-      clientId = id;
-      var messageModalBody = document.getElementById('messageModalBody');
-      if (messageModalBody != null) {
-        messageModalBody.innerHTML = "<p>Mensaje a cliente: " + clientId + "</p>"; 
-      }
-      $('#modal-message').modal({ backdrop: 'static', keyboard: false });
-    }
     openInfoModal = function(id) {
-      deliveryUserId = id;
+      partnerId = id;
       var infoModalBody = document.getElementById('infoModalBody');
       if (infoModalBody != null) {
-          // innerHTML
-          document.getElementById('infoModalCreatedAt').innerHTML = arrayDeliveryUsers[deliveryUserId].created_at;
-          // document.getElementById('infoModalUpdatedAt').innerHTML = arrayDeliveryUsers[deliveryUserId].updated_at;
-          $("#infoModalImg").attr("src", arrayDeliveryUsers[deliveryUserId].url_image);
           // input value
-          document.getElementById('infoModalName').value = arrayDeliveryUsers[deliveryUserId].name;
-          document.getElementById('infoModalLastname').value = arrayDeliveryUsers[deliveryUserId].lastname;
-          document.getElementById('infoModalEmail').value = arrayDeliveryUsers[deliveryUserId].email;
-          document.getElementById('infoModalDocument').value = arrayDeliveryUsers[deliveryUserId].document_number;
-          document.getElementById('infoModalFlagActive').value = arrayDeliveryUsers[deliveryUserId].active;
+          document.getElementById('infoModalName').value = arrayPartners[partnerId].name;
+          document.getElementById('infoModalRuc').value = arrayPartners[partnerId].ruc;
+          document.getElementById('infoModalAddress').value = arrayPartners[partnerId].address_info;
+          document.getElementById('infoModalPhone').value = arrayPartners[partnerId].phone;
+          document.getElementById('infoModalFlagActive').value = arrayPartners[partnerId].active;
       }
       $('#modal-info').modal({ backdrop: 'static', keyboard: false });
     }
     openEditModal = function(id) {
-      clientId = id;
+      partnerId = id;
       var editModalBody = document.getElementById('editModalBody');
       if (editModalBody != null) {
-        editModalBody.innerHTML = "<p>Editar cliente: " + clientId + "</p>"; 
+        editModalBody.innerHTML = "<p>Editar cliente: " + partnerId + "</p>"; 
       }
       $('#modal-edit').modal({ backdrop: 'static', keyboard: false });
     }
     openDeactivateModal = function(id) {
-      clientId = id;
+      partnerId = id;
       var deleteModalBody = document.getElementById('deleteModalBody');
       if (deleteModalBody != null) {
-        deleteModalBody.innerHTML = "<p>Eliminar cliente: " + clientId + "</p>"; 
+        deleteModalBody.innerHTML = "<p>Eliminar cliente: " + partnerId + "</p>"; 
       }
       $('#modal-delete').modal({ backdrop: 'static', keyboard: false });
     }
@@ -118,7 +106,7 @@
       $('#modal-info').modal('hide');
       var editModalBody = document.getElementById('editModalBody');
       if (editModalBody != null) {
-        editModalBody.innerHTML = "<p>Editar cliente: " + clientId + "</p>"; 
+        editModalBody.innerHTML = "<p>Editar cliente: " + partnerId + "</p>"; 
       }
       $('#modal-edit').modal({ backdrop: 'static', keyboard: false });
     }

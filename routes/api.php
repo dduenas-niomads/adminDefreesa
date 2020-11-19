@@ -24,3 +24,4 @@ Route::middleware('web')->get('/delivery-users', 'DeliveryUser\ApiDeliveryUserCo
 Route::middleware('web')->get('/orders', 'Order\ApiOrderController@getList')->name('api-orders-list');
 Route::middleware('web')->get('/categories', 'Category\ApiCategoryController@getList')->name('api-categories-list');
 Route::middleware('web')->get('/suppliers', 'Supplier\ApiSupplierController@getList')->name('api-suppliers-list');
+Route::middleware('web')->get('/partners', 'Partner\ApiPartnerController@getList')->name('api-partners-list');
