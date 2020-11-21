@@ -43,14 +43,14 @@
                     </ul>
                 </li>
             </ul>
-            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu">
+            <!-- <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu">
                 <li class="nav-item">
                     <a href="/categories" class="nav-link  @yield('nav-categories')">
                         <i class="fa fa-cubes nav-icon "></i>
                         <p>Categorías</p>
                     </a>
                 </li>
-            </ul>
+            </ul> -->
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu">
                 <li class="nav-item">
                     <a href="/suppliers" class="nav-link  @yield('nav-suppliers')">
@@ -60,8 +60,14 @@
                 </li>
             </ul>
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu">
-                <!-- Add icons to the links using the .nav-icon class
-                    with font-awesome or any other icon font library -->
+                <li class="nav-item">
+                    <a href="/products" class="nav-link  @yield('nav-products')">
+                        <i class="fa fa-shopping-cart nav-icon "></i>
+                        <p>Productos</p>
+                    </a>
+                </li>
+            </ul>
+            <!-- <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu">
                 <li class="nav-item has-treeview @yield('nav-users-menu')">
                     <a href="#" class="nav-link @yield('nav-users')">
                         <i class="nav-icon fas fa-users"></i>
@@ -90,30 +96,6 @@
                             </a>
                         </li>
                     </ul>
-                </li>
-            </ul>
-            <!-- <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu">
-                <li class="nav-item">
-                    <a href="/partners" class="nav-link  @yield('nav-partners')">
-                        <i class="fa fa-handshake nav-icon "></i>
-                        <p>Partners</p>
-                    </a>
-                </li>
-            </ul>            
-            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu">
-                <li class="nav-item">
-                    <a href="/delivery-users" class="nav-link  @yield('nav-delivery-users')">
-                        <i class="fa fa-motorcycle nav-icon "></i>
-                        <p>Repartidores</p>
-                    </a>
-                </li>
-            </ul>
-            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu">
-                <li class="nav-item">
-                    <a href="/clients" class="nav-link  @yield('nav-clients')">
-                        <i class="fa fa-heart nav-icon "></i>
-                        <p>Consumidores</p>
-                    </a>
                 </li>
             </ul> -->
             <!-- <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu">
