@@ -34,6 +34,7 @@ class SupplierController extends Controller
         $notification = true;
         if (isset($params['file'])) {
             $params['url_image'] = $this->uploadImage($params['file'], "defreesa/suppliers");
+            dd($params['url_image']);
         }
         $categories = ApiCategoryController::getListSimple();
         $result = ApiSupplierController::update(isset($params['id']) ? (int)$params['id'] : null, $params);
