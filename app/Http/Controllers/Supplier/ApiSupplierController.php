@@ -64,6 +64,20 @@ class ApiSupplierController extends Controller
         return $response;
     }
 
+    public static function getListSimple()
+    {
+        $response = ["data" => []];
+        if (Auth::user()) {
+            $params = [];
+            $params['order'] = self::optimizeOrder(isset($params['order']) ? $params['order'] : null);
+            $response = self::getListParent($params, 'suppliers/simple', null);
+            if (isset($response['body'])) {
+                $response = $response['body'];
+            }
+        }
+        return $response;
+    }
+
     public static function getById($id) {
         $response = [];
         if (Auth::user()) {

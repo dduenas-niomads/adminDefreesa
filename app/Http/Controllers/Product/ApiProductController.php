@@ -22,22 +22,19 @@ class ApiProductController extends Controller
         $columnName = null;
         switch ($order) {
             case 0:
-                $columnName = 'category_name';
-                break;
-            case 1:
-                $columnName = 'brand_name';
-                break;
-            case 2:
                 $columnName = 'name';
                 break;
-            case 3:
-                $columnName = 'code';
+            case 1:
+                $columnName = 'description';
             break;
-            case 4:
+            case 2:
+                $columnName = 'price';
+            break;            
+            case 3:
                 $columnName = 'flag_active';
                 break;
             default:
-                $columnName = 'category_name';
+                $columnName = 'name';
                 break;
         }
         return $columnName;
@@ -59,7 +56,21 @@ class ApiProductController extends Controller
         if (Auth::user()) {
             $params = $request->all();
             $params['order'] = self::optimizeOrder(isset($params['order']) ? $params['order'] : null);
-            $response = self::getListParent($params, Auth::user()->role['code'] . '/products');
+            $response = self::getListParent($params, 'products', '&all=1');
+            if (isset($response['body'])) {
+                $response = $response['body'];
+            }
+        }
+        return $response;
+    }
+
+    public static function getListSimple()
+    {
+        $response = ["data" => []];
+        if (Auth::user()) {
+            $params = [];
+            $params['order'] = self::optimizeOrder(isset($params['order']) ? $params['order'] : null);
+            $response = self::getListParent($params, 'products/simple', null);
             if (isset($response['body'])) {
                 $response = $response['body'];
             }
@@ -72,7 +83,7 @@ class ApiProductController extends Controller
         if (Auth::user()) {
             $request = HttpClient::withHeaders([
                 'Authorization' => 'Bearer ' . Auth::user()->access_token
-            ])->get(env('API_BUSINESS_URL') . 'warehouses/' . $id);
+            ])->get(env('API_BUSINESS_URL') . 'products/' . $id);
             if ($request->successful()) {
                 $response = $request->json();
                 $response = $response['body'];
@@ -87,7 +98,7 @@ class ApiProductController extends Controller
         if (Auth::user()) {
             $request = HttpClient::withHeaders([
                 'Authorization' => 'Bearer ' . Auth::user()->access_token
-            ])->patch(env('API_BUSINESS_URL') . Auth::user()->role['code'] . '/products/' . $id, $params);
+            ])->patch(env('API_BUSINESS_URL') . 'products/' . $id, $params);
             if ($request->successful()) {
                 $response = $request->json();
                 $response['result'] = "success";
@@ -105,7 +116,7 @@ class ApiProductController extends Controller
         if (Auth::user()) {
             $request = HttpClient::withHeaders([
                 'Authorization' => 'Bearer ' . Auth::user()->access_token
-            ])->post(env('API_BUSINESS_URL') . Auth::user()->role['code'] . '/products', $params);
+            ])->post(env('API_BUSINESS_URL') . 'products', $params);
             if ($request->successful()) {
                 $response = $request->json();
                 $response['result'] = "success";
@@ -123,7 +134,7 @@ class ApiProductController extends Controller
         if (Auth::user()) {
             $request = HttpClient::withHeaders([
                 'Authorization' => 'Bearer ' . Auth::user()->access_token
-            ])->delete(env('API_BUSINESS_URL') . Auth::user()->role['code'] . '/products/' . $id);
+            ])->delete(env('API_BUSINESS_URL') . 'products/' . $id);
             if ($request->successful()) {
                 $response = $request->json();
                 $response['result'] = "success";

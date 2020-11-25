@@ -28,11 +28,12 @@
                         <thead>
                             <tr role="row">
                                 <th>Categoría</th>
-                                <th>Marca</th>
+                                <th>Local Afiliado</th>
                                 <th>Nombre</th>
-                                <th>Código</th>
+                                <th>Descripción</th>
+                                <th>Precio</th>
                                 <th>Estado</th>
-                                <th>Opciones</th>
+                                <th width="20%">Opciones</th>
                             </tr>
                         </thead>
                     </table>
@@ -47,28 +48,7 @@
 					</div>
 					<div class="modal-body" id="infoModalBody">
 						<div class="row">
-							<div class="col-md-4">
-								<div class="card card-primary card-outline">
-									<div class="card-body box-profile">
-										<div class="text-center">
-											<img class="profile-user-img img-fluid img-circle" src="/img/logo.png" alt="User profile picture">
-										</div>
-										<br>
-										<ul class="list-group list-group-unbordered mb-3">
-											<li class="list-group-item-warehouses">
-												<b>Fecha de creación</b> <br> <a class="float-left" id="infoModalCreatedAt"></a>
-											</li>
-											<li class="list-group-item-warehouses">
-												<b>Última actualización</b> <br> <a class="float-left" id="infoModalUpdatedAt"></a>
-											</li>
-											<li class="list-group-item-warehouses">
-												<b>Kárdex</b> <br> <a class="float-left" id="infoModalKardex"></a>
-											</li>
-										</ul>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-8">
+							<div class="col-md-12">
 								<div class="card">
 									<div class="card-body">
 										<div class="tab-content">
@@ -77,13 +57,13 @@
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label">Categoría</label>
 													<div class="col-sm-9">
-														<input type="text" class="form-control" placeholder="Categoría" id="infoModalCategoryName" readonly>
+														<input type="text" class="form-control" placeholder="Categoría" id="infoModalCatName" readonly>
 													</div>
 												</div>
 												<div class="form-group row">
-													<label class="col-sm-3 col-form-label">Marca</label>
+													<label class="col-sm-3 col-form-label">Local Afiliado</label>
 													<div class="col-sm-9">
-														<input type="text" class="form-control" placeholder="Marca" id="infoModalBrandName" readonly>
+														<input type="text" class="form-control" placeholder="Marca" id="infoModalSupName" readonly>
 													</div>
 												</div>
 												<div class="form-group row">
@@ -96,12 +76,6 @@
 													<label class="col-sm-3 col-form-label">Descripción</label>
 													<div class="col-sm-9">
 														<input type="text" class="form-control" placeholder="Descripción" id="infoModalDescription" readonly>
-													</div>
-												</div>
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label">Código</label>
-													<div class="col-sm-9">
-														<input type="text" class="form-control" placeholder="Precio" id="infoModalCode" readonly>
 													</div>
 												</div>
 												<div class="form-group row">
@@ -121,9 +95,8 @@
 												</div>
 											</div>
 										</div>
-										<!-- /.tab-content -->
-									</div><!-- /.card-body -->
-								</div>
+									</div>
+								</div>										
 							</div>
 						</div>
 					</div>
@@ -144,55 +117,32 @@
 				</div>
 				<div class="modal-body" id="editModalBody">
 					<div class="row">
-						<div class="col-md-4">
-							<div class="card card-primary card-outline">
-								<div class="card-body box-profile">
-									<div class="text-center">
-										<img class="profile-user-img img-fluid img-circle" src="/img/logo.png" alt="User profile picture">
-									</div>
-									<br>
-									<ul class="list-group list-group-unbordered mb-3">
-										<li class="list-group-item-warehouses">
-											<b>Fecha de creación</b> <br> <a class="float-left" id="editModalCreatedAt"></a>
-										</li>
-										<li class="list-group-item-warehouses">
-											<b>Última actualización</b> <br> <a class="float-left" id="editModalUpdatedAt"></a>
-										</li>
-										<li class="list-group-item-warehouses">
-											<b>Kárdex</b> <br> <a class="float-left" id="editModalKardex"></a>
-										</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-8">
+						<div class="col-md-12">
 							<div class="card">
 								<div class="card-body">
 									<div class="tab-content">
 										<!-- /.tab-pane -->
 										<div class="active tab-pane" id="settings">
-											{{ Form::open(array('url' => '/products', 'method' => 'PUT')) }}
+										{{ Form::open(array('url' => '/products', 'method' => 'PUT', 'enctype' => 'multipart/form-data')) }}
 											<input type="hidden" name="id" id="editModalId">
 											<div class="form-group row">
 												<label class="col-sm-3 col-form-label">Categoría</label>
 												<div class="col-sm-9">
-													<select name="bs_ms_product_categories_id" id="editModalCategory" class="custom-select">
-														<option value="1">Productos generales</option>
+													<select class="form-control" placeholder="Seleccione una categoría" name="bs_ms_products_categories_id" id="editModalCategoryId">
+														@foreach ($categories as $category)
+															<option value="{{ $category['id'] }}">{{ $category['name'] }}</option>
+														@endforeach
 													</select>
 												</div>
 											</div>
 											<div class="form-group row">
-												<label class="col-sm-3 col-form-label">Marca</label>
+												<label class="col-sm-3 col-form-label">Local Afiliado</label>
 												<div class="col-sm-9">
-													<select name="bs_brands_id" id="editModalBrand" class="custom-select">
-														<option value="1">Primera marca</option>
-														<option value="2">Segunda marca</option>
-														<option value="3">Tercera marca</option>
-														<option value="4">Cuarta marca</option>
-														<option value="5">Quinta marca</option>
-														<option value="6">Sexta marca</option>
-														<option value="7">Séptima marca</option>
-													</select>	
+													<select class="form-control" placeholder="Seleccione un local" name="bs_suppliers_id" id="editModalSupplierId">
+														@foreach ($suppliers as $supplier)
+															<option value="{{ $supplier['id'] }}">{{ $supplier['name'] }}</option>
+														@endforeach
+													</select>
 												</div>
 											</div>
 											<div class="form-group row">
@@ -205,12 +155,6 @@
 												<label class="col-sm-3 col-form-label">Descripción</label>
 												<div class="col-sm-9">
 													<input type="text" class="form-control" placeholder="Descripción" name="description" id="editModalDescription" onClick="this.select();" autocomplete="off" maxlength="200">
-												</div>
-											</div>
-											<div class="form-group row">
-												<label class="col-sm-3 col-form-label">Código</label>
-												<div class="col-sm-9">
-													<input type="text" class="form-control" placeholder="Precio" name="code" id="editModalCode" onClick="this.select();" autocomplete="off" maxlength="25">
 												</div>
 											</div>
 											<div class="form-group row">
@@ -230,9 +174,8 @@
 											</div>
 										</div>
 									</div>
-									<!-- /.tab-content -->
-								</div><!-- /.card-body -->
-							</div>
+								</div>
+							</div>									
 						</div>
 					</div>
 				</div>
@@ -264,23 +207,21 @@
 											<div class="form-group row">
 												<label class="col-sm-3 col-form-label">Categoría</label>
 												<div class="col-sm-9">
-													<select name="bs_ms_product_categories_id" id="editModalCategory" class="custom-select">
-														<option value="1">Productos generales</option>
+													<select class="form-control" placeholder="Seleccione una categoría" name="bs_categories_id" id="newModalCategoryId">
+														@foreach ($categories as $category)
+															<option value="{{ $category['id'] }}">{{ $category['name'] }}</option>
+														@endforeach
 													</select>
 												</div>
 											</div>
 											<div class="form-group row">
-												<label class="col-sm-3 col-form-label">Marca</label>
+												<label class="col-sm-3 col-form-label">Local Afiliado</label>
 												<div class="col-sm-9">
-													<select name="bs_brands_id" id="editModalBrand" class="custom-select">
-														<option value="1">Primera marca</option>
-														<option value="2">Segunda marca</option>
-														<option value="3">Tercera marca</option>
-														<option value="4">Cuarta marca</option>
-														<option value="5">Quinta marca</option>
-														<option value="6">Sexta marca</option>
-														<option value="7">Séptima marca</option>
-													</select>	
+													<select class="form-control" placeholder="Seleccione una categoría" name="bs_suppliers_id" id="newModalSupplierId">
+														@foreach ($suppliers as $supplier)
+															<option value="{{ $supplier['id'] }}">{{ $supplier['name'] }}</option>
+														@endforeach
+													</select>
 												</div>
 											</div>
 											<div class="form-group row">
@@ -293,12 +234,6 @@
 												<label class="col-sm-3 col-form-label">Descripción</label>
 												<div class="col-sm-9">
 													<input type="text" class="form-control" placeholder="Descripción" name="description" id="editModalDescription" onClick="this.select();" autocomplete="off" maxlength="200">
-												</div>
-											</div>
-											<div class="form-group row">
-												<label class="col-sm-3 col-form-label">Código</label>
-												<div class="col-sm-9">
-													<input type="text" class="form-control" placeholder="Precio" name="code" id="editModalCode" onClick="this.select();" autocomplete="off" maxlength="25" required>
 												</div>
 											</div>
 											<div class="form-group row">
