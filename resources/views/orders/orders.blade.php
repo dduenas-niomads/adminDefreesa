@@ -18,12 +18,13 @@
                     <table id="example1" class="table table-bordered table-hover dataTable dtr-inline" role="grid" aria-describedby="example2_info">
                         <thead>
                             <tr role="row">
+                                <th>N.Orden</th>
                                 <th>Fecha creación</th>
-                                <th>N.Pedido</th>
-                                <th>Referencia</th>
+                                <th>Tienda</th>
+                                <th>Detalle</th>
                                 <th>Total</th>
                                 <th>Estado</th>
-                                <th>Opciones</th>
+                                <th width="20%">Opciones</th>
                             </tr>
                         </thead>
                     </table>

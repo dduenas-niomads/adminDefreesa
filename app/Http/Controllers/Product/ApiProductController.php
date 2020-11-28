@@ -56,7 +56,7 @@ class ApiProductController extends Controller
         if (Auth::user()) {
             $params = $request->all();
             $params['order'] = self::optimizeOrder(isset($params['order']) ? $params['order'] : null);
-            $response = self::getListParent($params, 'products', '&all=1');
+            $response = self::getListParent($params, 'products/my-products', '&all=1');
             if (isset($response['body'])) {
                 $response = $response['body'];
             }

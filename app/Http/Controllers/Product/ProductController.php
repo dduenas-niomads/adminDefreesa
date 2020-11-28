@@ -26,7 +26,7 @@ class ProductController extends Controller
     {
         $categories = ApiMsProductCategoryController::getListSimple();
         $suppliers = ApiSupplierController::getListSimple();
-        $view = view('products.products', compact('suppliers', 'categories', 'suppliers'));
+        $view = view('products.products', compact('categories', 'suppliers'));
         return $view;
     }
 

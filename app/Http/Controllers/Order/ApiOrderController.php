@@ -22,16 +22,22 @@ class ApiOrderController extends Controller
         $columnName = null;
         switch ($order) {
             case 0:
-                $columnName = 'created_at';
+                $columnName = 'id';
                 break;
             case 1:
-                $columnName = 'correlative';
+                $columnName = 'created_at';
                 break;
             case 2:
-                $columnName = 'reference';
+                $columnName = 'bs_suppliers_id';
                 break;
             case 3:
-                $columnName = 'status_code';
+                $columnName = 'details_info';
+                break;                
+            case 4:
+                $columnName = 'total';
+                break;
+            case 5:
+                $columnName = 'status';
                 break;
             default:
                 $columnName = 'created_at';
@@ -56,7 +62,7 @@ class ApiOrderController extends Controller
         if (Auth::user()) {
             $params = $request->all();
             $params['order'] = self::optimizeOrder(isset($params['order']) ? $params['order'] : null);
-            $response = self::getListParent($params, Auth::user()->role['code'] . '/orders');
+            $response = self::getListParent($params, 'orders', '&all=1');
             if (isset($response['body'])) {
                 $response = $response['body'];
             }

@@ -98,15 +98,15 @@
                     </ul>
                 </li>
             </ul> -->
-            <!-- <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu">
                 <li class="nav-item">
                     <a href="/orders" class="nav-link  @yield('nav-orders')">
                         <i class="fa fa-clipboard-check nav-icon "></i>
-                        <p>Pedidos y entregas</p>
+                        <p>Mis Órdenes</p>
                     </a>
                 </li>
             </ul>
-            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu">
+            <!-- <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu">
                 <li class="nav-item">
                     <a href="/sales" class="nav-link  @yield('nav-sales')">
                         <i class="fa fa-file-invoice nav-icon "></i>

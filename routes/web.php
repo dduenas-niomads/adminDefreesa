@@ -64,6 +64,10 @@ Route::put('/suppliers', 'Supplier\SupplierController@updateForm')->name('update
 Route::post('/suppliers', 'Supplier\SupplierController@createForm')->name('create-form-supplier');
 Route::delete('/suppliers', 'Supplier\SupplierController@deleteForm')->name('delete-form-supplier');
 Route::post('/upload', 'Supplier\SupplierController@uploadFile')->name('uploadfile');
+// Orders
+Route::get('/orders', 'Order\OrderController@index')->name('orders');
+Route::get('/orders/edit/{id}', 'Order\OrderController@edit')->name('order-edit');
+Route::put('/orders/{id}', 'Order\OrderController@update')->name('update-order');
 
 // Sales
 Route::get('/electronic-invoice', 'Sale\SaleController@electronicInvoice')->name('electronic-invoice');
