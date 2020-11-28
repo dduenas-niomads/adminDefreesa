@@ -55,8 +55,21 @@ class SupplierController extends Controller
     {
         $params = $request->all();
         $notification = true;
+        $carrousel = [];
         if (isset($params['file'])) {
             $params['url_image'] = $this->uploadImage($params['file'], "defreesa/suppliers");
+        }
+        if (isset($params['carrousel1'])) {
+            array_push($carrousel,$this->uploadImage($params['carrousel1'], "defreesa/suppliers"));
+        }
+        if (isset($params['carrousel2'])) {
+            array_push($carrousel,$this->uploadImage($params['carrousel2'], "defreesa/suppliers"));
+        }
+        if (isset($params['carrousel3'])) {
+            array_push($carrousel,$this->uploadImage($params['carrousel3'], "defreesa/suppliers"));
+        }
+        if (count($carrousel) !== 0) {
+            $params['image_carrousel'] = $carrousel;
         }
         $categories = ApiCategoryController::getListSimple();
         $result = ApiSupplierController::create($params);

@@ -88,6 +88,12 @@
                     return data.name;
                 }},
                 {'data':   function (data) {
+                    return data.ruc;
+                }},
+                {'data':   function (data) {
+                    return data.business_name;
+                }},
+                {'data':   function (data) {
                     return data.description;
                 }},
                 {'data':   function (data) {
@@ -120,6 +126,10 @@
                 // input value
                 document.getElementById('infoModalCatName').value = arraySuppliers[supplierId].category.name;
                 document.getElementById('infoModalName').value = arraySuppliers[supplierId].name;
+                document.getElementById('infoModalRuc').value = arraySuppliers[supplierId].ruc;
+                document.getElementById('infoModalBusinessName').value = arraySuppliers[supplierId].business_name;
+                document.getElementById('infoModalPhone').value = arraySuppliers[supplierId].phone;
+                document.getElementById('infoModalAddress').value = arraySuppliers[supplierId].address;
                 document.getElementById('infoModalDescription').value = arraySuppliers[supplierId].description;
                 document.getElementById('infoModalFlagActive').value = arraySuppliers[supplierId].flag_active;
             }
@@ -136,6 +146,10 @@
                 // input value
                 document.getElementById('editModalId').value = supplierId;
                 document.getElementById('editModalName').value = arraySuppliers[supplierId].name;
+                document.getElementById('editModalRuc').value = arraySuppliers[supplierId].ruc;
+                document.getElementById('editModalBusinessName').value = arraySuppliers[supplierId].business_name;
+                document.getElementById('editModalPhone').value = arraySuppliers[supplierId].phone;
+                document.getElementById('editModalAddress').value = arraySuppliers[supplierId].address;
                 document.getElementById('editModalCategoryId').value = arraySuppliers[supplierId].bs_categories_id;
                 document.getElementById('editModalDescription').value = arraySuppliers[supplierId].description;
                 document.getElementById('editModalFlagActive').value = arraySuppliers[supplierId].flag_active;

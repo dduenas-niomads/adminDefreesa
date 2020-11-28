@@ -52,7 +52,7 @@
             return data.ruc;
           }},
           {'data':   function (data) {
-            return data.address_info;
+            return data.address_info.address;
           }},
           {'data':   function (data) {
             return data.phone;
@@ -80,7 +80,7 @@
           // input value
           document.getElementById('infoModalName').value = arrayPartners[partnerId].name;
           document.getElementById('infoModalRuc').value = arrayPartners[partnerId].ruc;
-          document.getElementById('infoModalAddress').value = arrayPartners[partnerId].address_info;
+          document.getElementById('infoModalAddress').value = arrayPartners[partnerId].address_info.address;
           document.getElementById('infoModalPhone').value = arrayPartners[partnerId].phone;
           document.getElementById('infoModalFlagActive').value = arrayPartners[partnerId].active;
       }
