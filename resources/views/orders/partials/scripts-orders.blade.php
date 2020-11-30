@@ -15,6 +15,7 @@
             "info": true,
             "scrollX": false,
             "processing": true,
+            "serverSide": true,
             "lengthChange": false,
             "language": {
                 "url": "/js/languages/datatables/es.json"
@@ -25,13 +26,15 @@
             "searching": true,
             "responsive": true,
             "ajax": function(data, callback, settings) {
-                $.get('/api/orders', {
+                $.get('/api/orders-for-partners', {
                     limit: data.length,
                     offset: data.start,
+                    order: data.order,
+                    search: data.search,
                 }, function(res) {
                     arrayOrders = [];
                     res.data.forEach(element => {
-                    arrayOrders[element.id] = element;
+                        arrayOrders[element.id] = element;
                     });
                     callback({
                         recordsTotal: res.total,
@@ -42,7 +45,7 @@
             },
             "columns": [
                 {'data':   function (data) {
-                    return data.id;
+                    return "Nº " + data.id;
                 }},
                 {'data':   function (data) {
                     return data.created_at;
@@ -51,14 +54,18 @@
                     return data.supplier.name;
                 }},
                 {'data':   function (data) {
-                    return data.details_info;
+                    var message = "";
+                    data.details_info.forEach(element => {
+                        message = message + "<p>- " + element.name + " (" + element.quantity + ")</p>"; 
+                    });
+                    return message;
                 }},
                 {'data':   function (data) {
                     return data.total;
                 }},
                 {'data':   function (data) {
                     return '<div align="center">' +
-                    '<button type="button" onClick="openStatusModal(\'' + data.status + '\');">' + data.status + '</button>' +
+                    '<button type="button" onClick="openStatusModal(\'' + data.status + '\');">' + data.order_status.name + '</button>' +
                     '</div>';
                 }},
                 {'data':   function (data) {

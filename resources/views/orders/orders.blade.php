@@ -24,7 +24,7 @@
                                 <th>Detalle</th>
                                 <th>Total</th>
                                 <th>Estado</th>
-                                <th width="20%">Opciones</th>
+                                <th>Opciones</th>
                             </tr>
                         </thead>
                     </table>
