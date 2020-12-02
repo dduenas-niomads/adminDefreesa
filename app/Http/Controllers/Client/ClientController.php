@@ -40,9 +40,21 @@ class ClientController extends Controller
         return $view;
     }
 
-    public function update($id, Request $request)
+    public function updateForm(Request $request)
     {
         $params = $request->all();
-        dd($id, $params);
+        $notification = true;
+        $result = ApiClientController::update(isset($params['id']) ? (int)$params['id'] : null, $params);
+        $view = view('clients.clients', compact('notification', 'result'));
+        return $view;
+    }
+
+    public function deleteForm(Request $request)
+    {
+        $params = $request->all();
+        $notification = true;
+        $result = ApiClientController::delete(isset($params['id']) ? (int)$params['id'] : null);
+        $view = view('clients.clients', compact('notification', 'result'));
+        return $view;
     }
 }

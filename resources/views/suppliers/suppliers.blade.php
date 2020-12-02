@@ -217,6 +217,12 @@
 												</div>
 											</div>
 											<div class="form-group row">
+												<label class="col-sm-3 col-form-label">Dirección</label>
+												<div class="col-sm-9">
+													<input type="text" class="form-control" placeholder="Dirección" name="address" id="editModalAddress" onClick="this.select();" autocomplete="off" maxlength="200">
+												</div>
+											</div>
+											<div class="form-group row">
 												<label class="col-sm-3 col-form-label">Descripción</label>
 												<div class="col-sm-9">
 													<input type="text" class="form-control" placeholder="Descripción" name="description" id="editModalDescription" onClick="this.select();" autocomplete="off" maxlength="200">
@@ -273,27 +279,6 @@
 												<div class="col-sm-3 col-form-label">
 													<div class="form-group">
 														<input type="file" name="file" placeholder="Elegir imagen" id="createFile">
-														<span class="text-danger">{{ $errors->first('title') }}</span>
-													</div>
-												</div>
-											</div>
-											<div class="form-group row">
-												<label class="col-sm-12 col-form-label">Carrusel</label><br>
-												<div class="col-sm-3 col-form-label">
-													<div class="form-group">
-														<input type="file" name="carrousel1" placeholder="Elegir imagen" id="carrousel1">
-														<span class="text-danger">{{ $errors->first('title') }}</span>
-													</div>
-												</div>
-												<div class="col-sm-3 col-form-label">
-													<div class="form-group">
-														<input type="file" name="carrousel2" placeholder="Elegir imagen" id="carrousel2">
-														<span class="text-danger">{{ $errors->first('title') }}</span>
-													</div>
-												</div>
-												<div class="col-sm-3 col-form-label">
-													<div class="form-group">
-														<input type="file" name="carrousel3" placeholder="Elegir imagen" id="carrousel3">
 														<span class="text-danger">{{ $errors->first('title') }}</span>
 													</div>
 												</div>
