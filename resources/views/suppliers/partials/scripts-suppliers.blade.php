@@ -82,6 +82,9 @@
                     return '<a href="' + data.url_image + '" target="_blank"><img src="' + data.url_image + '" width="50px"></a>';
                 }, "orderable": false},
                 {'data':   function (data) {
+                    return data.region.name;
+                }},                
+                {'data':   function (data) {
                     return data.category.name;
                 }},
                 {'data':   function (data) {
@@ -124,6 +127,7 @@
                 // document.getElementById('infoModalUpdatedAt').innerHTML = arraySuppliers[supplierId].updated_at;
                 $("#infoModalImg").attr("src", arraySuppliers[supplierId].url_image);
                 // input value
+                document.getElementById('infoModalRegion').value = arraySuppliers[supplierId].region.name;
                 document.getElementById('infoModalCatName').value = arraySuppliers[supplierId].category.name;
                 document.getElementById('infoModalName').value = arraySuppliers[supplierId].name;
                 document.getElementById('infoModalRuc').value = arraySuppliers[supplierId].ruc;
@@ -151,6 +155,7 @@
                 document.getElementById('editModalPhone').value = arraySuppliers[supplierId].phone;
                 document.getElementById('editModalAddress').value = arraySuppliers[supplierId].address;
                 document.getElementById('editModalCategoryId').value = arraySuppliers[supplierId].bs_categories_id;
+                document.getElementById('editModalRegionId').value = arraySuppliers[supplierId].bs_ms_region_id;
                 document.getElementById('editModalDescription').value = arraySuppliers[supplierId].description;
                 document.getElementById('editModalFlagActive').value = arraySuppliers[supplierId].flag_active;
             }

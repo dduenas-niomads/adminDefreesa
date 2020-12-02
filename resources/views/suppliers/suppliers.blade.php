@@ -28,6 +28,7 @@
                         <thead>
                             <tr role="row">
                                 <th>Imagen</th>
+                                <th>Región</th>
                                 <th>Categoría</th>
                                 <th>Nombre</th>
                                 <th>Ruc</th>
@@ -73,6 +74,12 @@
 										<div class="tab-content">
 											<!-- /.tab-pane -->
 											<div class="active tab-pane" id="info">
+												<div class="form-group row">
+													<label class="col-sm-3 col-form-label">Región</label>
+													<div class="col-sm-9">
+														<input type="text" class="form-control" placeholder="Región" id="infoModalRegion" readonly>
+													</div>
+												</div>											
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label">Categoría</label>
 													<div class="col-sm-9">
@@ -183,6 +190,37 @@
 												</div>
 											</div>
 											<div class="form-group row">
+												<label class="col-sm-3 col-form-label">Carrusel 1</label>
+												<div class="col-sm-9">
+													<input type="file" name="carrousel1" placeholder="Elegir imagen" id="carrousel1">
+													<span class="text-danger">{{ $errors->first('title') }}</span>
+												</div>
+											</div>
+											<div class="form-group row">
+												<label class="col-sm-3 col-form-label">Carrusel 2</label>
+												<div class="col-sm-9">
+													<input type="file" name="carrousel2" placeholder="Elegir imagen" id="carrousel2">
+													<span class="text-danger">{{ $errors->first('title') }}</span>
+												</div>
+											</div>
+											<div class="form-group row">
+												<label class="col-sm-3 col-form-label">Carrusel 3</label>
+												<div class="col-sm-9">
+													<input type="file" name="carrousel3" placeholder="Elegir imagen" id="carrousel3">
+													<span class="text-danger">{{ $errors->first('title') }}</span>
+												</div>
+											</div>											
+											<div class="form-group row">
+												<label class="col-sm-3 col-form-label">Región</label>
+												<div class="col-sm-9">
+													<select class="form-control" placeholder="Seleccione una Región" name="bs_ms_region_id" id="editModalRegionId">
+														@foreach ($regions as $region)
+															<option value="{{ $region['id'] }}">{{ $region['name'] }}</option>
+														@endforeach
+													</select>
+												</div>
+											</div>											
+											<div class="form-group row">
 												<label class="col-sm-3 col-form-label">Categoría</label>
 												<div class="col-sm-9">
 													<select class="form-control" placeholder="Seleccione una categoría" name="bs_categories_id" id="editModalCategoryId">
@@ -284,46 +322,51 @@
 												</div>
 											</div>
 											<div class="form-group row">
-												<label class="col-sm-12 col-form-label">Carrusel</label><br>
-												<div class="col-sm-3 col-form-label">
+												<label class="col-sm-12 col-form-label">Carrusel</label>
+												<div class="col-sm-9 col-form-label">
 													<div class="form-group">
+													<label class="col-sm-3 col-form-label">Carrusel 1</label>
 														<input type="file" name="carrousel1" placeholder="Elegir imagen" id="carrousel1">
 														<span class="text-danger">{{ $errors->first('title') }}</span>
 													</div>
 												</div>
-												<div class="col-sm-3 col-form-label">
+												<div class="col-sm-9 col-form-label">
 													<div class="form-group">
+													<label class="col-sm-3 col-form-label">Carrusel 2</label>
 														<input type="file" name="carrousel2" placeholder="Elegir imagen" id="carrousel2">
 														<span class="text-danger">{{ $errors->first('title') }}</span>
 													</div>
 												</div>
-												<div class="col-sm-3 col-form-label">
+												<div class="col-sm-9 col-form-label">
 													<div class="form-group">
+													<label class="col-sm-3 col-form-label">Carrusel 3</label>
 														<input type="file" name="carrousel3" placeholder="Elegir imagen" id="carrousel3">
 														<span class="text-danger">{{ $errors->first('title') }}</span>
 													</div>
 												</div>
 											</div>
 											<div class="form-group row">
+												<label class="col-sm-3 col-form-label">Región</label>
+												<div class="col-sm-3">
+													<select class="form-control" placeholder="Seleccione una Región" name="bs_ms_region_id" id="newModalRegionId">
+														@foreach ($regions as $region)
+															<option value="{{ $region['id'] }}">{{ $region['name'] }}</option>
+														@endforeach
+													</select>
+												</div>
 												<label class="col-sm-3 col-form-label">Categoría</label>
-												<div class="col-sm-9">
+												<div class="col-sm-3">
 													<select class="form-control" placeholder="Seleccione una categoría" name="bs_categories_id" id="newModalCategoryId">
 														@foreach ($categories as $category)
 															<option value="{{ $category['id'] }}">{{ $category['name'] }}</option>
 														@endforeach
 													</select>
 												</div>
-											</div>
+											</div>											
 											<div class="form-group row">
 												<label class="col-sm-3 col-form-label">Nombre</label>
 												<div class="col-sm-9">
 													<input type="text" class="form-control" placeholder="Nombre" name="name" id="newModalName" onClick="this.select();" autocomplete="off" maxlength="100" required>
-												</div>
-											</div>
-											<div class="form-group row">
-												<label class="col-sm-3 col-form-label">Ruc</label>
-												<div class="col-sm-9">
-													<input type="text" class="form-control" placeholder="Ruc" name="ruc" id="newModalRuc" onClick="this.select();" autocomplete="off" maxlength="100" required>
 												</div>
 											</div>
 											<div class="form-group row">
@@ -333,8 +376,12 @@
 												</div>
 											</div>
 											<div class="form-group row">
+												<label class="col-sm-3 col-form-label">Ruc</label>
+												<div class="col-sm-3">
+													<input type="text" class="form-control" placeholder="Ruc" name="ruc" id="newModalRuc" onClick="this.select();" autocomplete="off" maxlength="100" required>
+												</div>
 												<label class="col-sm-3 col-form-label">Teléfono</label>
-												<div class="col-sm-9">
+												<div class="col-sm-3">
 													<input type="text" class="form-control" placeholder="Teléfono" name="phone" id="newModalPhone" onClick="this.select();" autocomplete="off" maxlength="100" required>
 												</div>
 											</div>											

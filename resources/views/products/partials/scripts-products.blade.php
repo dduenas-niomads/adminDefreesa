@@ -113,7 +113,7 @@
             if (deleteModalBody != null) {
                 // input value
                 document.getElementById('deleteModalId').value = productId;
-                deleteModalBody.innerHTML = "<p>Desea eliminar el producto: <b>" + arrayProducts[productId].code + " - " + arrayProducts[productId].name + "</b>?</p>"; 
+                deleteModalBody.innerHTML = "<p>Desea eliminar el producto: <b>" + arrayProducts[productId].name + "</b>?</p>"; 
             }
             $('#modal-delete').modal({ backdrop: 'static', keyboard: false });
         }
