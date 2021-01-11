@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('web')->post('/checkout-validation', 'License\ApiLicenseController@generateAuthorizationWS')->name('checkout-validation');
 // Lists
 Route::middleware('web')->get('/sales', 'Sale\ApiSaleController@getList')->name('api-sales-list');
+Route::middleware('web')->get('/payments', 'Payment\ApiPaymentController@getList')->name('api-payments-list');
 Route::middleware('web')->get('/warehouses', 'Warehouse\ApiWarehouseController@getList')->name('api-warehouses-list');
 Route::middleware('web')->get('/products', 'Product\ApiProductController@getList')->name('api-products-list');
 // Route::middleware('web')->get('/clients', 'Client\ApiClientController@getList')->name('api-clients-list');

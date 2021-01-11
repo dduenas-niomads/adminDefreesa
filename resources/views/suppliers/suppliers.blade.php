@@ -322,6 +322,12 @@
 												</div>
 											</div>
 											<div class="form-group row">
+												<label class="col-sm-3 col-form-label">MAPA</label>
+												<div class="col-sm-9">
+													<input type="text" class="form-control" placeholder="Dirección del local" name="address_info" id="address_info" onClick="this.select();" maxlength="100" required>
+												</div>
+											</div>
+											<div class="form-group row">
 												<label class="col-sm-12 col-form-label">Carrusel</label>
 												<div class="col-sm-9 col-form-label">
 													<div class="form-group">

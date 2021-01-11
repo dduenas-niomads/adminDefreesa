@@ -2,6 +2,22 @@
 <link rel="stylesheet" href="{{ asset('css/datatables/dataTables.bootstrap4.min.css') }}">
 <link rel="stylesheet" href="{{ asset('css/datatables/responsive.bootstrap4.min.css') }}">
 <!-- scripts -->
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA9c5osK00eNP30vJeRLapr82ifRz_9C4o&libraries=places&callback=initMap" async defer"></script>
+    <script>
+    function initMap() {
+       var input = document.getElementById('address_info');
+       var autocomplete = new google.maps.places.Autocomplete(input);
+       autocomplete.addListener('place_changed', function() {
+           var place = autocomplete.getPlace();
+           document.getElementById('location-snap').
+           innerHTML = place.formatted_address;  
+           document.getElementById('lat-span').
+           innerHTML = place.geometry.location.lat();
+           document.getElementById('lon-span').
+           innerHTML = place.geometry.location.lng();
+       });
+    }
+</script>
 <script src="{{ asset('scripts/datatables/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('scripts/datatables/dataTables.bootstrap4.min.js') }}"></script>
 <script src="{{ asset('scripts/datatables/dataTables.responsive.min.js') }}"></script>

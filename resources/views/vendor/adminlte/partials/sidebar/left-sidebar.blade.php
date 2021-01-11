@@ -106,15 +106,15 @@
                     </a>
                 </li>
             </ul>
-            <!-- <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu">
                 <li class="nav-item">
-                    <a href="/sales" class="nav-link  @yield('nav-sales')">
+                    <a href="/payments" class="nav-link  @yield('nav-payments')">
                         <i class="fa fa-file-invoice nav-icon "></i>
-                        <p>Ventas y pagos</p>
+                        <p>Mis pagos</p>
                     </a>
                 </li>
             </ul>
-            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu">
+            <!-- <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu">
                 <li class="nav-item">
                     <a href="/contact-support" class="nav-link  @yield('nav-contact-support')">
                         <i class="fa fa-headset nav-icon "></i>

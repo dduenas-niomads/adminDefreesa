@@ -68,7 +68,11 @@ Route::post('/upload', 'Supplier\SupplierController@uploadFile')->name('uploadfi
 Route::get('/orders', 'Order\OrderController@index')->name('orders');
 Route::get('/orders/edit/{id}', 'Order\OrderController@edit')->name('order-edit');
 Route::put('/orders/{id}', 'Order\OrderController@update')->name('update-order');
-
+// Payments
+Route::get('/payments', 'Payment\PaymentController@index')->name('payments');
+Route::put('/payments', 'Payment\PaymentController@updateForm')->name('update-form-payment');
+Route::post('/payments', 'Payment\PaymentController@createForm')->name('create-form-payment');
+Route::delete('/payments', 'Payment\PaymentController@deleteForm')->name('delete-form-payment');
 // Sales
 Route::get('/electronic-invoice', 'Sale\SaleController@electronicInvoice')->name('electronic-invoice');
 Route::get('/sales', 'Sale\SaleController@index')->name('sales');
