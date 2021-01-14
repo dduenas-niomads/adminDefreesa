@@ -176,6 +176,7 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         Obs\ObsServiceProvider::class,
+        Kreait\Laravel\Firebase\ServiceProvider::class
     ],
 
     /*

@@ -20,7 +20,8 @@
                             <tr role="row">
                                 <th>N.Orden</th>
                                 <th>Fecha creación</th>
-                                <th>Tienda</th>
+								<th>Tienda</th>
+								<th>Cliente</th>
                                 <th>Detalle</th>
                                 <th>Total</th>
                                 <th>Estado</th>

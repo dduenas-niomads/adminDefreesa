@@ -45,13 +45,16 @@
             },
             "columns": [
                 {'data':   function (data) {
-                    return "Nº " + data.id;
+                    return "<b>Nº</b> " + data.id;
                 }},
                 {'data':   function (data) {
-                    return data.created_at;
+                    return "<b>Día:</b> " + data.created_at.substring(0,10) + "<br><b>Hora:</b> " + data.created_at.substring(11,19);
                 }},
                 {'data':   function (data) {
                     return data.supplier.name;
+                }},
+                {'data':   function (data) {
+                    return "<b>Nombre:</b> " + data.customer.name + "<br><b>Teléfono:</b> " + data.customer.phone;
                 }},
                 {'data':   function (data) {
                     var message = "";
@@ -61,7 +64,7 @@
                     return message;
                 }},
                 {'data':   function (data) {
-                    return data.total;
+                    return "S/ " + data.total;
                 }},
                 {'data':   function (data) {
                     return '<div align="center">' +
