@@ -19,6 +19,90 @@
 			background-color: #fff;
 			/* border: 1px solid rgba(0,0,0,.125); */
 		}
+		/* Always set the map height explicitly to define the size of the div
+		* element that contains the map. */
+		#map {
+			height: 300px;
+			width: 100%;
+		}
+		/* Optional: Makes the sample page fill the window. */
+		/* html, body {
+			height: 100%;
+			margin: 0;
+			padding: 0;
+		} */
+		#description {
+			font-family: Roboto;
+			font-size: 15px;
+			font-weight: 300;
+		}
+		
+		#infowindow-content .title {
+			font-weight: bold;
+		}
+		
+		#infowindow-content {
+			display: none;
+		}
+		
+		#map #infowindow-content {
+			display: inline;
+		}
+		
+		.pac-card {
+			margin: 10px 10px 0 0;
+			border-radius: 2px 0 0 2px;
+			box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			outline: none;
+			box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+			background-color: #fff;
+			font-family: Roboto;
+		}
+
+		.pac-container {
+			z-index: 9999;
+		}
+		
+		#pac-container {
+			padding-bottom: 12px;
+			margin-right: 12px;
+			z-index: 9999;
+		}
+		
+		.pac-controls {
+			display: inline-block;
+			padding: 5px 11px;
+		}
+		
+		.pac-controls label {
+			font-family: Roboto;
+			font-size: 13px;
+			font-weight: 300;
+		}
+		
+		#pac-input {
+			background-color: #fff;
+			font-family: Roboto;
+			font-size: 15px;
+			font-weight: 300;
+			margin-left: 12px;
+			padding: 0 11px 0 13px;
+			text-overflow: ellipsis;
+			width: 400px;
+		}
+		
+		#pac-input:focus {
+			border-color: #4d90fe;
+		}
+		
+		#title {
+			color: #fff;
+			background-color: #4d90fe;
+			font-size: 25px;
+			font-weight: 500;
+			padding: 6px 12px;
+		}
 	</style>
     <div class="row">
         <div class="col-12">
@@ -148,7 +232,7 @@
 			</div>
 			<!-- /.modal-dialog -->
 		</div>
-		<div class="modal fade bd-example-modal-lg" id="modal-edit" style="display: none;">
+		<div class="modal fade bd-example-modal-lg" id="modal-edit" style="display: none">
 			<div class="modal-dialog modal-lg">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -156,8 +240,22 @@
 				</div>
 				<div class="modal-body" id="editModalBody">
 					<div class="row">
-						<div class="col-md-4">
+						<div class="col-md-12">
 							<div class="card card-primary card-outline">
+								<div>
+									<div class="pac-card" id="pac-card">
+										<div id="pac-container" style="padding-top: 10px;">
+											<input id="pac-input" type="text" placeholder="Ingresar dirección" />
+										</div>
+									</div>
+									<div id="map"></div>
+									<div id="infowindow-content">
+										<img src="" width="16" height="16" id="place-icon" />
+										<span id="place-name" class="title"></span><br />
+										<span id="place-address"></span>
+									</div>
+								</div>
+								<hr>
 								<div class="card-body box-profile">
 									<div class="text-center">
 										<img class="profile-user-img img-fluid img-circle" id="editModalImg" src="/img/logo.png" alt="User profile picture" height="100px">
@@ -167,21 +265,19 @@
 										<li class="list-group-item-warehouses">
 											<b>Fecha de creación</b> <br> <a class="float-left" id="editModalCreatedAt"></a>
 										</li>
-										<!-- <li class="list-group-item-warehouses">
-											<b>Última actualización</b> <br> <a class="float-left" id="editModalUpdatedAt"></a>
-										</li> -->
 									</ul>
 								</div>
 							</div>
 						</div>
-						<div class="col-md-8">
+						<div class="col-md-12">
 							<div class="card">
 								<div class="card-body">
 									<div class="tab-content">
 										<!-- /.tab-pane -->
 										<div class="active tab-pane" id="settings">
 											{{ Form::open(array('url' => '/suppliers', 'method' => 'PUT', 'enctype' => 'multipart/form-data')) }}
-											<input type="hidden" name="id" id="editModalId">             
+											<input type="hidden" name="id" id="editModalId">
+											<input type="hidden" name="address_info" id="address_info">
 											<div class="form-group row">
 												<label class="col-sm-3 col-form-label">Imagen</label>
 												<div class="col-sm-9">
@@ -209,7 +305,7 @@
 													<input type="file" name="carrousel3" placeholder="Elegir imagen" id="carrousel3">
 													<span class="text-danger">{{ $errors->first('title') }}</span>
 												</div>
-											</div>											
+											</div>
 											<div class="form-group row">
 												<label class="col-sm-3 col-form-label">Región</label>
 												<div class="col-sm-9">
@@ -219,7 +315,7 @@
 														@endforeach
 													</select>
 												</div>
-											</div>											
+											</div>
 											<div class="form-group row">
 												<label class="col-sm-3 col-form-label">Categoría</label>
 												<div class="col-sm-9">
@@ -255,7 +351,7 @@
 												</div>
 											</div>
 											<div class="form-group row">
-												<label class="col-sm-3 col-form-label">Dirección</label>
+												<label class="col-sm-3 col-form-label">Dirección a mostrar</label>
 												<div class="col-sm-9">
 													<input type="text" class="form-control" placeholder="Dirección" name="address" id="editModalAddress" onClick="this.select();" autocomplete="off" maxlength="200">
 												</div>
@@ -317,36 +413,6 @@
 												<div class="col-sm-3 col-form-label">
 													<div class="form-group">
 														<input type="file" name="file" placeholder="Elegir imagen" id="createFile">
-														<span class="text-danger">{{ $errors->first('title') }}</span>
-													</div>
-												</div>
-											</div>											
-											<div class="form-group row">
-												<label class="col-sm-3 col-form-label">MAPA</label>
-												<div class="col-sm-9">
-													<input type="text" class="form-control" placeholder="Dirección del local" name="address_info" id="address_info" onClick="this.select();" maxlength="100" required>
-												</div>
-											</div>
-											<div class="form-group row">
-												<label class="col-sm-12 col-form-label">Carrusel</label>
-												<div class="col-sm-9 col-form-label">
-													<div class="form-group">
-													<label class="col-sm-3 col-form-label">Carrusel 1</label>
-														<input type="file" name="carrousel1" placeholder="Elegir imagen" id="carrousel1">
-														<span class="text-danger">{{ $errors->first('title') }}</span>
-													</div>
-												</div>
-												<div class="col-sm-9 col-form-label">
-													<div class="form-group">
-													<label class="col-sm-3 col-form-label">Carrusel 2</label>
-														<input type="file" name="carrousel2" placeholder="Elegir imagen" id="carrousel2">
-														<span class="text-danger">{{ $errors->first('title') }}</span>
-													</div>
-												</div>
-												<div class="col-sm-9 col-form-label">
-													<div class="form-group">
-													<label class="col-sm-3 col-form-label">Carrusel 3</label>
-														<input type="file" name="carrousel3" placeholder="Elegir imagen" id="carrousel3">
 														<span class="text-danger">{{ $errors->first('title') }}</span>
 													</div>
 												</div>

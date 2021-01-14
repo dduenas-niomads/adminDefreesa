@@ -50,6 +50,11 @@ class SupplierController extends Controller
         if (count($carrousel) !== 0) {
             $params['image_carrousel'] = $carrousel;
         }
+        if (isset($params['address_info'])) {
+            if (!is_array($params['address_info'])) {
+                $params['address_info'] = json_decode($params['address_info']);
+            }
+        }
         $categories = ApiCategoryController::getListSimple();
         $regions = ApiMsRegionController::getListSimple();
         $result = ApiSupplierController::update(isset($params['id']) ? (int)$params['id'] : null, $params);

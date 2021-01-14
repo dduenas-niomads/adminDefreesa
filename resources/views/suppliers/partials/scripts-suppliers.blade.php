@@ -2,22 +2,6 @@
 <link rel="stylesheet" href="{{ asset('css/datatables/dataTables.bootstrap4.min.css') }}">
 <link rel="stylesheet" href="{{ asset('css/datatables/responsive.bootstrap4.min.css') }}">
 <!-- scripts -->
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA9c5osK00eNP30vJeRLapr82ifRz_9C4o&libraries=places&callback=initMap" async defer"></script>
-    <script>
-    function initMap() {
-       var input = document.getElementById('address_info');
-       var autocomplete = new google.maps.places.Autocomplete(input);
-       autocomplete.addListener('place_changed', function() {
-           var place = autocomplete.getPlace();
-           document.getElementById('location-snap').
-           innerHTML = place.formatted_address;  
-           document.getElementById('lat-span').
-           innerHTML = place.geometry.location.lat();
-           document.getElementById('lon-span').
-           innerHTML = place.geometry.location.lng();
-       });
-    }
-</script>
 <script src="{{ asset('scripts/datatables/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('scripts/datatables/dataTables.bootstrap4.min.js') }}"></script>
 <script src="{{ asset('scripts/datatables/dataTables.responsive.min.js') }}"></script>
@@ -26,6 +10,10 @@
 <script>
     var arraySuppliers = [];
     var supplierId = 0;
+    var addressInfo = {
+        empty: true,
+        components: null
+    };
 
     $(document).ready(function (e) {
         $.ajaxSetup({
@@ -157,6 +145,8 @@
         }
         openEditModal = function(id) {
             supplierId = id;
+            addressInfo.empty = true;
+            addressInfo.components = null;
             var editModalBody = document.getElementById('editModalBody');
             if (editModalBody != null) {
                 // innerHTML
@@ -192,8 +182,110 @@
             openEditModal(supplierId);
         }
     });
-</script>
 
+    // This example requires the Places library. Include the libraries=places
+// parameter when you first load the API. For example:
+// <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+function initMap() {
+    const map = new google.maps.Map(document.getElementById("map"), {
+        center: { lat: -12.003937, lng: -77.1879306 },
+        zoom: 5,
+        zoomControl: false,
+        mapTypeControl: false,
+        scaleControl: false,
+        streetViewControl: false,
+        rotateControl: false,
+        fullscreenControl: false
+    });
+    const card = document.getElementById("pac-card");
+    const input = document.getElementById("pac-input");
+    map.controls[google.maps.ControlPosition.TOP_RIGHT].push(card);
+    const autocomplete = new google.maps.places.Autocomplete(input);
+    // Bind the map's bounds (viewport) property to the autocomplete object,
+    // so that the autocomplete requests use the current map bounds for the
+    // bounds option in the request.
+    autocomplete.bindTo("bounds", map);
+    // Set the data fields to return when the user selects a place.
+    autocomplete.setFields(["address_components", "geometry", "icon", "name"]);
+    const infowindow = new google.maps.InfoWindow();
+    const infowindowContent = document.getElementById("infowindow-content");
+    infowindow.setContent(infowindowContent);
+    const marker = new google.maps.Marker({
+      map,
+      anchorPoint: new google.maps.Point(0, -29),
+      draggable: true
+    });
+    autocomplete.addListener("place_changed", () => {
+      infowindow.close();
+      marker.setVisible(false);
+      const place = autocomplete.getPlace();
+      addressInfo.empty = false;
+      addressInfo.components = {
+          details: place.address_components,
+          lat: place.geometry.location.lat(),
+          lng: place.geometry.location.lng()
+      };
+      document.getElementById("address_info").value = JSON.stringify(addressInfo);
+  
+      if (!place.geometry) {
+        // User entered the name of a Place that was not suggested and
+        // pressed the Enter key, or the Place Details request failed.
+        window.alert("No details available for input: '" + place.name + "'");
+        return;
+      }
+  
+      // If the place has a geometry, then present it on a map.
+      if (place.geometry.viewport) {
+        map.fitBounds(place.geometry.viewport);
+      } else {
+        map.setCenter(place.geometry.location);
+        map.setZoom(17); // Why 17? Because it looks good.
+      }
+      marker.setPosition(place.geometry.location);
+      marker.setVisible(true);
+      let address = "";
+  
+      if (place.address_components) {
+        address = [
+          (place.address_components[0] &&
+            place.address_components[0].short_name) ||
+            "",
+          (place.address_components[1] &&
+            place.address_components[1].short_name) ||
+            "",
+          (place.address_components[2] &&
+            place.address_components[2].short_name) ||
+            "",
+        ].join(" ");
+      }
+      infowindowContent.children["place-icon"].src = place.icon;
+      infowindowContent.children["place-name"].textContent = place.name;
+      infowindowContent.children["place-address"].textContent = address;
+      infowindow.open(map, marker);
+    });
+  
+    // Sets a listener on a radio button to change the filter type on Places
+    // Autocomplete.
+    // function setupClickListener(id, types) {
+    //   const radioButton = document.getElementById(id);
+    //   radioButton.addEventListener("click", () => {
+    //     autocomplete.setTypes(types);
+    //     console.log("check");
+    //   });
+    // }
+    // setupClickListener("changetype-all", ["address"]);
+    // setupClickListener("changetype-address", ["address"]);
+    // setupClickListener("changetype-establishment", ["establishment"]);
+    // setupClickListener("changetype-geocode", ["geocode"]);
+    // document.getElementById("use-strict-bounds").addEventListener("click", function () {
+    //     console.log("Checkbox clicked! New state=" + this.checked);
+    //     autocomplete.setOptions({ strictBounds: this.checked });
+    //   });
+    autocomplete.setTypes(["address"]);
+  }
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key={{ env('MAPS_API_KEY') }}&callback=initMap&libraries=places&v=weekly" defer></script>
 @if (isset($notification) && $notification)
 	<div class="modal fade" id="modal-notification" style="display: none;">
 		<div class="modal-dialog">
