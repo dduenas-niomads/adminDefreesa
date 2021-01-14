@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Product;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Product\ApiProductController;
+use App\Http\Controllers\Supplier\ApiSupplierController;
+use App\Http\Controllers\MsProductCategory\ApiMsProductCategoryController;
 use Auth;
 use Carbon\Carbon;
 
@@ -22,36 +24,20 @@ class ProductController extends Controller
     
     public function index()
     {
-        if (Auth::user()) {
-            $view = view('products.products');
-        } else {
-            $view = view('errors.403');
-        }
+        $categories = ApiMsProductCategoryController::getListSimple();
+        $suppliers = ApiSupplierController::getListSimple();
+        $view = view('products.products', compact('categories', 'suppliers'));
         return $view;
-    }
-
-    public function edit($id)
-    {
-        if (Auth::user()) {
-            dd($id);
-        } else {
-            $view = view('errors.403');
-        }
-        return $view;
-    }
-
-    public function update($id, Request $request)
-    {
-        $params = $request->all();
-        dd($id, $params);
     }
 
     public function updateForm(Request $request)
     {
         $params = $request->all();
         $notification = true;
+        $categories = ApiMsProductCategoryController::getListSimple();
+        $suppliers = ApiSupplierController::getListSimple();
         $result = ApiProductController::update(isset($params['id']) ? (int)$params['id'] : null, $params);
-        $view = view('products.products', compact('notification', 'result'));
+        $view = view('products.products', compact('notification', 'result', 'categories', 'suppliers'));
         return $view;
     }
 
@@ -59,8 +45,10 @@ class ProductController extends Controller
     {
         $params = $request->all();
         $notification = true;
+        $categories = ApiMsProductCategoryController::getListSimple();
+        $suppliers = ApiSupplierController::getListSimple();
         $result = ApiProductController::delete(isset($params['id']) ? (int)$params['id'] : null);
-        $view = view('products.products', compact('notification', 'result'));
+        $view = view('products.products', compact('notification', 'result', 'categories', 'suppliers'));
         return $view;
     }
 
@@ -68,8 +56,10 @@ class ProductController extends Controller
     {
         $params = $request->all();
         $notification = true;
+        $categories = ApiMsProductCategoryController::getListSimple();
+        $suppliers = ApiSupplierController::getListSimple();
         $result = ApiProductController::create($params);
-        $view = view('products.products', compact('notification', 'result'));
+        $view = view('products.products', compact('notification', 'result', 'categories', 'suppliers'));
         return $view;
     }
 }

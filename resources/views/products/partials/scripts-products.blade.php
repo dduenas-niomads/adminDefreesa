@@ -24,7 +24,7 @@
         "language": {
             "url": "/js/languages/datatables/es.json"
         },
-        "order": [[ 2, "asc" ]],
+        "order": [[ 0, "asc" ]],
         "ajax": function(data, callback, settings) {
             $.get('/api/products', {
                 limit: data.length,
@@ -45,17 +45,20 @@
         },
         "columns"    : [
             {'data':   function (data) {
-                return data.category_name;
+                return data.category.name;
             }},
             {'data':   function (data) {
-                return data.brand_name;
+                return data.supplier.name;
             }},
             {'data':   function (data) {
                 return data.name;
             }},
             {'data':   function (data) {
-                return data.code;
+                return data.description;
             }},
+            {'data':   function (data) {
+                return data.price;
+            }},            
             {'data':   function (data) {
                 var message = "Activo";
                 if (data.flag_active != 1) {
@@ -79,16 +82,11 @@
             productId = id;
             var infoModalBody = document.getElementById('infoModalBody');
             if (infoModalBody != null) {
-                // innerHTML
-                document.getElementById('infoModalCreatedAt').innerHTML = arrayProducts[productId].created_at;
-                document.getElementById('infoModalUpdatedAt').innerHTML = arrayProducts[productId].updated_at;
-                document.getElementById('infoModalKardex').innerHTML = "Ver movimientos";
                 // input value
-                document.getElementById('infoModalCategoryName').value = arrayProducts[productId].category_name;
-                document.getElementById('infoModalBrandName').value = arrayProducts[productId].brand_name;
+                document.getElementById('infoModalCatName').value = arrayProducts[productId].category.name;
+                document.getElementById('infoModalSupName').value = arrayProducts[productId].supplier.name;
                 document.getElementById('infoModalName').value = arrayProducts[productId].name;
                 document.getElementById('infoModalDescription').value = arrayProducts[productId].description;
-                document.getElementById('infoModalCode').value = arrayProducts[productId].code;
                 document.getElementById('infoModalPrice').value = arrayProducts[productId].price;
                 document.getElementById('infoModalFlagActive').value = arrayProducts[productId].flag_active;
             }
@@ -98,17 +96,12 @@
             productId = id;
             var editModalBody = document.getElementById('editModalBody');
             if (editModalBody != null) {
-                // innerHTML
-                document.getElementById('editModalCreatedAt').innerHTML = arrayProducts[productId].created_at;
-                document.getElementById('editModalUpdatedAt').innerHTML = arrayProducts[productId].updated_at;
-                document.getElementById('editModalKardex').innerHTML = "Ver movimientos";
                 // input value
                 document.getElementById('editModalId').value = productId;
-                document.getElementById('editModalCategory').value = arrayProducts[productId].bs_ms_product_categories_id;
-                document.getElementById('editModalBrand').value = arrayProducts[productId].bs_brands_id;
+                document.getElementById('editModalCategoryId').value = arrayProducts[productId].bs_ms_products_categories_id;
+                document.getElementById('editModalSupplierId').value = arrayProducts[productId].bs_suppliers_id;
                 document.getElementById('editModalName').value = arrayProducts[productId].name;
                 document.getElementById('editModalDescription').value = arrayProducts[productId].description;
-                document.getElementById('editModalCode').value = arrayProducts[productId].code;
                 document.getElementById('editModalPrice').value = arrayProducts[productId].price;
                 document.getElementById('editModalFlagActive').value = arrayProducts[productId].flag_active;
             }
@@ -120,7 +113,7 @@
             if (deleteModalBody != null) {
                 // input value
                 document.getElementById('deleteModalId').value = productId;
-                deleteModalBody.innerHTML = "<p>Desea eliminar el producto: <b>" + arrayProducts[productId].code + " - " + arrayProducts[productId].name + "</b>?</p>"; 
+                deleteModalBody.innerHTML = "<p>Desea eliminar el producto: <b>" + arrayProducts[productId].name + "</b>?</p>"; 
             }
             $('#modal-delete').modal({ backdrop: 'static', keyboard: false });
         }

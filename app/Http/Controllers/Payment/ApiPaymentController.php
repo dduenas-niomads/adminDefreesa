@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Supplier;
+namespace App\Http\Controllers\Payment;
 
 use Illuminate\Support\Facades\Http as HttpClient;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Auth;
 
-class ApiSupplierController extends Controller
+class ApiPaymentController extends Controller
 {
     /**
      * Create a new api controller instance.
@@ -22,19 +22,19 @@ class ApiSupplierController extends Controller
         $columnName = null;
         switch ($order) {
             case 0:
-                $columnName = 'url_image';
+                $columnName = 'bs_suppliers_id';
                 break;
             case 1:
-                $columnName = 'name';
+                $columnName = 'total';
                 break;
             case 2:
-                $columnName = 'description';
-            break;
+                $columnName = 'status';
+                break;
             case 3:
-                $columnName = 'flag_active';
+                $columnName = 'active';
                 break;
             default:
-                $columnName = 'name';
+                $columnName = 'total';
                 break;
         }
         return $columnName;
@@ -56,21 +56,7 @@ class ApiSupplierController extends Controller
         if (Auth::user()) {
             $params = $request->all();
             $params['order'] = self::optimizeOrder(isset($params['order']) ? $params['order'] : null);
-            $response = self::getListParent($params, 'suppliers/my-suppliers', '&all=1');
-            if (isset($response['body'])) {
-                $response = $response['body'];
-            }
-        }
-        return $response;
-    }
-
-    public static function getListSimple()
-    {
-        $response = ["data" => []];
-        if (Auth::user()) {
-            $params = [];
-            $params['order'] = self::optimizeOrder(isset($params['order']) ? $params['order'] : null);
-            $response = self::getListParent($params, 'suppliers/simple', null);
+            $response = self::getListParent($params, 'payments', '&all=1');
             if (isset($response['body'])) {
                 $response = $response['body'];
             }
@@ -83,7 +69,7 @@ class ApiSupplierController extends Controller
         if (Auth::user()) {
             $request = HttpClient::withHeaders([
                 'Authorization' => 'Bearer ' . Auth::user()->access_token
-            ])->get(env('API_BUSINESS_URL') . 'suppliers/' . $id);
+            ])->get(env('API_BUSINESS_URL') . 'payments/' . $id);
             if ($request->successful()) {
                 $response = $request->json();
                 $response = $response['body'];
@@ -92,13 +78,14 @@ class ApiSupplierController extends Controller
         return $response;
     }
 
+    
     public static function update($id, $params = [])
     {
         $response = [];
         if (Auth::user()) {
             $request = HttpClient::withHeaders([
                 'Authorization' => 'Bearer ' . Auth::user()->access_token
-            ])->patch(env('API_BUSINESS_URL') . 'suppliers/' . $id, $params);
+            ])->patch(env('API_BUSINESS_URL') . 'payments/' . $id, $params);
             if ($request->successful()) {
                 $response = $request->json();
                 $response['result'] = "success";
@@ -116,7 +103,7 @@ class ApiSupplierController extends Controller
         if (Auth::user()) {
             $request = HttpClient::withHeaders([
                 'Authorization' => 'Bearer ' . Auth::user()->access_token
-            ])->post(env('API_BUSINESS_URL') . 'suppliers', $params);
+            ])->post(env('API_BUSINESS_URL') . 'payments', $params);
             if ($request->successful()) {
                 $response = $request->json();
                 $response['result'] = "success";
@@ -134,7 +121,7 @@ class ApiSupplierController extends Controller
         if (Auth::user()) {
             $request = HttpClient::withHeaders([
                 'Authorization' => 'Bearer ' . Auth::user()->access_token
-            ])->delete(env('API_BUSINESS_URL') . 'suppliers/' . $id);
+            ])->delete(env('API_BUSINESS_URL') . 'payments/' . $id);
             if ($request->successful()) {
                 $response = $request->json();
                 $response['result'] = "success";

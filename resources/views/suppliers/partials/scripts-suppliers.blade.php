@@ -2,6 +2,22 @@
 <link rel="stylesheet" href="{{ asset('css/datatables/dataTables.bootstrap4.min.css') }}">
 <link rel="stylesheet" href="{{ asset('css/datatables/responsive.bootstrap4.min.css') }}">
 <!-- scripts -->
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA9c5osK00eNP30vJeRLapr82ifRz_9C4o&libraries=places&callback=initMap" async defer"></script>
+    <script>
+    function initMap() {
+       var input = document.getElementById('address_info');
+       var autocomplete = new google.maps.places.Autocomplete(input);
+       autocomplete.addListener('place_changed', function() {
+           var place = autocomplete.getPlace();
+           document.getElementById('location-snap').
+           innerHTML = place.formatted_address;  
+           document.getElementById('lat-span').
+           innerHTML = place.geometry.location.lat();
+           document.getElementById('lon-span').
+           innerHTML = place.geometry.location.lng();
+       });
+    }
+</script>
 <script src="{{ asset('scripts/datatables/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('scripts/datatables/dataTables.bootstrap4.min.js') }}"></script>
 <script src="{{ asset('scripts/datatables/dataTables.responsive.min.js') }}"></script>
@@ -82,10 +98,19 @@
                     return '<a href="' + data.url_image + '" target="_blank"><img src="' + data.url_image + '" width="50px"></a>';
                 }, "orderable": false},
                 {'data':   function (data) {
+                    return data.region.name;
+                }},                
+                {'data':   function (data) {
                     return data.category.name;
                 }},
                 {'data':   function (data) {
                     return data.name;
+                }},
+                {'data':   function (data) {
+                    return data.ruc;
+                }},
+                {'data':   function (data) {
+                    return data.business_name;
                 }},
                 {'data':   function (data) {
                     return data.description;
@@ -118,8 +143,13 @@
                 // document.getElementById('infoModalUpdatedAt').innerHTML = arraySuppliers[supplierId].updated_at;
                 $("#infoModalImg").attr("src", arraySuppliers[supplierId].url_image);
                 // input value
+                document.getElementById('infoModalRegion').value = arraySuppliers[supplierId].region.name;
                 document.getElementById('infoModalCatName').value = arraySuppliers[supplierId].category.name;
                 document.getElementById('infoModalName').value = arraySuppliers[supplierId].name;
+                document.getElementById('infoModalRuc').value = arraySuppliers[supplierId].ruc;
+                document.getElementById('infoModalBusinessName').value = arraySuppliers[supplierId].business_name;
+                document.getElementById('infoModalPhone').value = arraySuppliers[supplierId].phone;
+                document.getElementById('infoModalAddress').value = arraySuppliers[supplierId].address;
                 document.getElementById('infoModalDescription').value = arraySuppliers[supplierId].description;
                 document.getElementById('infoModalFlagActive').value = arraySuppliers[supplierId].flag_active;
             }
@@ -136,7 +166,12 @@
                 // input value
                 document.getElementById('editModalId').value = supplierId;
                 document.getElementById('editModalName').value = arraySuppliers[supplierId].name;
+                document.getElementById('editModalRuc').value = arraySuppliers[supplierId].ruc;
+                document.getElementById('editModalBusinessName').value = arraySuppliers[supplierId].business_name;
+                document.getElementById('editModalPhone').value = arraySuppliers[supplierId].phone;
+                document.getElementById('editModalAddress').value = arraySuppliers[supplierId].address;
                 document.getElementById('editModalCategoryId').value = arraySuppliers[supplierId].bs_categories_id;
+                document.getElementById('editModalRegionId').value = arraySuppliers[supplierId].bs_ms_region_id;
                 document.getElementById('editModalDescription').value = arraySuppliers[supplierId].description;
                 document.getElementById('editModalFlagActive').value = arraySuppliers[supplierId].flag_active;
             }

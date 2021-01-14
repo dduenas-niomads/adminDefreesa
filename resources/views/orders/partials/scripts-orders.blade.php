@@ -15,6 +15,7 @@
             "info": true,
             "scrollX": false,
             "processing": true,
+            "serverSide": true,
             "lengthChange": false,
             "language": {
                 "url": "/js/languages/datatables/es.json"
@@ -25,13 +26,15 @@
             "searching": true,
             "responsive": true,
             "ajax": function(data, callback, settings) {
-                $.get('/api/orders', {
+                $.get('/api/orders-for-partners', {
                     limit: data.length,
                     offset: data.start,
+                    order: data.order,
+                    search: data.search,
                 }, function(res) {
                     arrayOrders = [];
                     res.data.forEach(element => {
-                    arrayOrders[element.id] = element;
+                        arrayOrders[element.id] = element;
                     });
                     callback({
                         recordsTotal: res.total,
@@ -42,28 +45,37 @@
             },
             "columns": [
                 {'data':   function (data) {
-                    return data.created_at;
+                    return "<b>Nº</b> " + data.id;
                 }},
                 {'data':   function (data) {
-                    return data.correlative;
+                    return "<b>Día:</b> " + data.created_at.substring(0,10) + "<br><b>Hora:</b> " + data.created_at.substring(11,19);
                 }},
                 {'data':   function (data) {
-                    return data.reference;
+                    return data.supplier.name;
                 }},
                 {'data':   function (data) {
-                    return data.total;
+                    return "<b>Nombre:</b> " + data.customer.name + "<br><b>Teléfono:</b> " + data.customer.phone;
+                }},
+                {'data':   function (data) {
+                    var message = "";
+                    data.details_info.forEach(element => {
+                        message = message + "<p>- " + element.name + " (" + element.quantity + ")</p>"; 
+                    });
+                    return message;
+                }},
+                {'data':   function (data) {
+                    return "S/ " + data.total;
                 }},
                 {'data':   function (data) {
                     return '<div align="center">' +
-                    '<button type="button" onClick="openStatusModal(\'' + data.status_code + '\');" class="btn btn-outline-' + data.status_class + '">' + data.status_code + '</button>' +
+                    '<button type="button" onClick="openStatusModal(\'' + data.status + '\');">' + data.order_status.name + '</button>' +
                     '</div>';
                 }},
                 {'data':   function (data) {
                     return '<div class="col-md-12 row">' + 
-                    '<div class="col-md-3"><button type="button" onClick="openMessageModal(' + data.id + ');" class="btn btn-block btn-outline-secondary"><i class="far fa-envelope"></i></button></div>' +
-                    '<div class="col-md-3"><button type="button" onClick="openInfoModal(' + data.id + ');" class="btn btn-block btn-outline-info"><i class="fas fa-info"></i></button></div>' +
-                    '<div class="col-md-3"><button type="button" onClick="openEditModal(' + data.id + ');" class="btn btn-block btn-outline-warning"><i class="fas fa-edit"></i></button></div>' +
-                    '<div class="col-md-3"><button type="button" onClick="openDeactivateModal(' + data.id + ');" class="btn btn-block btn-outline-danger"><i class="fas fa-trash-alt"></i></button></div>' +
+                    '<div class="col-md-4"><button type="button" onClick="openInfoModal(' + data.id + ');" class="btn btn-block btn-outline-info"><i class="fas fa-info"></i></button></div>' +
+                    '<div class="col-md-4"><button type="button" onClick="openEditModal(' + data.id + ');" class="btn btn-block btn-outline-warning"><i class="fas fa-edit"></i></button></div>' +
+                    '<div class="col-md-4"><button type="button" onClick="openDeactivateModal(' + data.id + ');" class="btn btn-block btn-outline-danger"><i class="fas fa-trash-alt"></i></button></div>' +
                     '</div>';
                 }, "orderable": false},
             ],
@@ -72,12 +84,12 @@
             var statusModalBody = document.getElementById('statusModalBody');
             if (statusModalBody != null) {
                 var statusCodes = [
-                    { code: "INI", name: "Iniciado" }, 
-                    { code: "PRG", name: "En progreso" }, 
-                    { code: "TER", name: "Terminado" }, 
-                    { code: "CNG", name: "Congelado" }, 
-                    { code: "CAN", name: "Cancelado" },
-                    { code: "XNV", name: "Inválido" },
+                    { code: "1", name: "INICIADO" }, 
+                    { code: "2", name: "EN PREPARACION" }, 
+                    { code: "3", name: "RECOGIDO" }, 
+                    { code: "4", name: "EN CAMINO" }, 
+                    { code: "5", name: "ENTREGADO" },
+                    { code: "6", name: "NO PROCESADO" },
                 ];
                 var tbodyValues = "";
                 statusCodes.forEach(element => {
