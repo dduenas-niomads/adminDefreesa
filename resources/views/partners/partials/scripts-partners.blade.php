@@ -90,7 +90,13 @@
       partnerId = id;
       var editModalBody = document.getElementById('editModalBody');
       if (editModalBody != null) {
-        editModalBody.innerHTML = "<p>Editar cliente: " + partnerId + "</p>"; 
+          // input value
+          document.getElementById('editModalId').value = partnerId;
+          document.getElementById('editModalName').value = arrayPartners[partnerId].name;
+          document.getElementById('editModalRuc').value = arrayPartners[partnerId].ruc;
+          document.getElementById('editModalAddress').value = arrayPartners[partnerId].address_info;
+          document.getElementById('editModalPhone').value = arrayPartners[partnerId].phone;
+          document.getElementById('editModalFlagActive').value = arrayPartners[partnerId].active;
       }
       $('#modal-edit').modal({ backdrop: 'static', keyboard: false });
     }
@@ -98,7 +104,9 @@
       partnerId = id;
       var deleteModalBody = document.getElementById('deleteModalBody');
       if (deleteModalBody != null) {
-        deleteModalBody.innerHTML = "<p>Eliminar cliente: " + partnerId + "</p>"; 
+          // input value
+          document.getElementById('deleteModalId').value = partnerId;
+          deleteModalBody.innerHTML = "<p>Desea eliminar al partner: <b>" + arrayPartners[partnerId].name + " " + arrayPartners[partnerId].lastname +"</b>?</p>"; 
       }
       $('#modal-delete').modal({ backdrop: 'static', keyboard: false });
     }
@@ -106,9 +114,31 @@
       $('#modal-info').modal('hide');
       var editModalBody = document.getElementById('editModalBody');
       if (editModalBody != null) {
-        editModalBody.innerHTML = "<p>Editar cliente: " + partnerId + "</p>"; 
+        editModalBody.innerHTML = "<p>Editar partner: " + partnerId + "</p>"; 
       }
       $('#modal-edit').modal({ backdrop: 'static', keyboard: false });
     }
   });
 </script>
+
+@if (isset($notification) && $notification)
+	<div class="modal fade" id="modal-notification" style="display: none;">
+		<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-body">
+			    <h4 class="modal-title">{{ isset($result['message']) ? $result['message'] : "Hubo un error en la operación. Intente nuevamente, si el error persiste comuníquese con soporte técnico" }}</h4>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-outline-{{ $result['result'] }}" data-dismiss="modal">Ok</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+		</div>
+		<!-- /.modal-dialog -->
+	</div>
+	<script>
+		$(function () {
+			$('#modal-notification').modal({ backdrop: 'static', keyboard: false });
+		});
+	</script>
+@endif

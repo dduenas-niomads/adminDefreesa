@@ -94,7 +94,12 @@
       clientId = id;
       var editModalBody = document.getElementById('editModalBody');
       if (editModalBody != null) {
-        editModalBody.innerHTML = "<p>Editar cliente: " + clientId + "</p>"; 
+          // input value
+          document.getElementById('editModalId').value = clientId;
+          document.getElementById('editModalName').value = arrayClients[clientId].name;
+          document.getElementById('editModalLastname').value = arrayClients[clientId].lastname;
+          document.getElementById('editModalDocument').value = arrayClients[clientId].document_number;
+          document.getElementById('editModalFlagActive').value = arrayClients[clientId].active;
       }
       $('#modal-edit').modal({ backdrop: 'static', keyboard: false });
     }
@@ -102,7 +107,9 @@
       clientId = id;
       var deleteModalBody = document.getElementById('deleteModalBody');
       if (deleteModalBody != null) {
-        deleteModalBody.innerHTML = "<p>Eliminar cliente: " + clientId + "</p>"; 
+          // input value
+          document.getElementById('deleteModalId').value = clientId;
+          deleteModalBody.innerHTML = "<p>Desea eliminar al consumidor: <b>" + arrayClients[clientId].name + " " + arrayClients[clientId].lastname +"</b>?</p>"; 
       }
       $('#modal-delete').modal({ backdrop: 'static', keyboard: false });
     }
@@ -116,3 +123,25 @@
     }
   });
 </script>
+
+@if (isset($notification) && $notification)
+	<div class="modal fade" id="modal-notification" style="display: none;">
+		<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-body">
+			    <h4 class="modal-title">{{ isset($result['message']) ? $result['message'] : "Hubo un error en la operación. Intente nuevamente, si el error persiste comuníquese con soporte técnico" }}</h4>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-outline-{{ $result['result'] }}" data-dismiss="modal">Ok</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+		</div>
+		<!-- /.modal-dialog -->
+	</div>
+	<script>
+		$(function () {
+			$('#modal-notification').modal({ backdrop: 'static', keyboard: false });
+		});
+	</script>
+@endif

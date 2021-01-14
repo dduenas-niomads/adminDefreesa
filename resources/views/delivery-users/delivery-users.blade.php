@@ -120,17 +120,66 @@
 			</div>
 			<!-- /.modal-dialog -->
 		</div>
-		<div class="modal fade" id="modal-edit" style="display: none;">
-			<div class="modal-dialog">
+		<div class="modal fade bd-example-modal-lg" id="modal-edit" style="display: none;">
+			<div class="modal-dialog modal-lg">
 			<div class="modal-content">
 				<div class="modal-header">
-				<h4 class="modal-title">Edit Modal</h4>
+					<h4 class="modal-title">Cambiar datos de repartidor</h4>
 				</div>
 				<div class="modal-body" id="editModalBody">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="card">
+								<div class="card-body">
+									<div class="tab-content">
+										<!-- /.tab-pane -->
+										<div class="active tab-pane" id="settings">
+										{{ Form::open(array('url' => '/delivery-users', 'method' => 'PUT', 'enctype' => 'multipart/form-data')) }}
+											<input type="hidden" name="id" id="editModalId">
+											<div class="form-group row">
+												<label class="col-sm-3 col-form-label">Nombres</label>
+												<div class="col-sm-9">
+													<input type="text" class="form-control" placeholder="Nombres" name="name" id="editModalName" onClick="this.select();" autocomplete="off" maxlength="100">
+												</div>
+											</div>
+											<div class="form-group row">
+												<label class="col-sm-3 col-form-label">Apellidos</label>
+												<div class="col-sm-9">
+													<input type="text" class="form-control" placeholder="Apellidos" name="lastname" id="editModalLastname" onClick="this.select();" autocomplete="off" maxlength="200">
+												</div>
+											</div>
+											<div class="form-group row">
+												<label class="col-sm-3 col-form-label">Email</label>
+												<div class="col-sm-9">
+													<input type="text" class="form-control" placeholder="Email" name="email" id="editModalEmail" onClick="this.select();" autocomplete="off" maxlength="10">
+												</div>
+											</div>											
+											<div class="form-group row">
+												<label class="col-sm-3 col-form-label">Documento</label>
+												<div class="col-sm-9">
+													<input type="text" class="form-control" placeholder="Documento" name="document_number" id="editModalDocument" onClick="this.select();" autocomplete="off" maxlength="10">
+												</div>
+											</div>
+											<div class="form-group row">
+												<label class="col-sm-3 col-form-label">Estado</label>
+												<div class="col-sm-9">
+													<select name="active" id="editModalFlagActive" class="custom-select">
+														<option value="1">ACTIVO</option>
+														<option value="0">INACTIVO</option>
+													</select>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>									
+						</div>
+					</div>
 				</div>
 				<div class="modal-footer">
-				<button type="button" class="btn btn-default pull-left" data-dismiss="modal">Regresar</button>
-				<button type="button" class="btn btn-warning">Guardar cambios</button>
+					<button type="button" class="btn btn-default pull-left" data-dismiss="modal">Regresar</button>
+					<button type="submit" class="btn btn-warning">Guardar cambios</button>
+					{{ Form::close() }}
 				</div>
 			</div>
 			<!-- /.modal-content -->
@@ -141,13 +190,16 @@
 			<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-				<h4 class="modal-title">Delete Modal</h4>
+				<h4 class="modal-title">Eliminar repartidor</h4>
 				</div>
 				<div class="modal-body" id="deleteModalBody">
 				</div>
 				<div class="modal-footer">
-				<button type="button" class="btn btn-default pull-left" data-dismiss="modal">Regresar</button>
-				<button type="button" class="btn btn-danger">Eliminar cliente</button>
+					{{ Form::open(array('url' => '/delivery-users', 'method' => 'DELETE')) }}
+					<input type="hidden" name="id" id="deleteModalId">
+					<button type="button" class="btn btn-default pull-left" data-dismiss="modal">No</button>
+					<button type="submit" class="btn btn-danger">Sí</button>
+					{{ Form::close() }}
 				</div>
 			</div>
 			<!-- /.modal-content -->

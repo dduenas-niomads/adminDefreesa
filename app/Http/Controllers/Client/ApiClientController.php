@@ -83,4 +83,40 @@ class ApiClientController extends Controller
         }
         return $response;
     }
+
+    public static function update($id, $params = [])
+    {
+        $response = [];
+        if (Auth::user()) {
+            $request = HttpClient::withHeaders([
+                'Authorization' => 'Bearer ' . Auth::user()->access_token
+            ])->patch(env('API_BUSINESS_URL') . 'consumers/' . $id, $params);
+            if ($request->successful()) {
+                $response = $request->json();
+                $response['result'] = "success";
+            } else {
+                $response = $request->json();
+                $response['result'] = "danger";
+            }
+        }
+        return $response;
+    }
+
+    public static function delete($id)
+    {
+        $response = [];
+        if (Auth::user()) {
+            $request = HttpClient::withHeaders([
+                'Authorization' => 'Bearer ' . Auth::user()->access_token
+            ])->delete(env('API_BUSINESS_URL') . 'consumers/' . $id);
+            if ($request->successful()) {
+                $response = $request->json();
+                $response['result'] = "success";
+            } else {
+                $response = $request->json();
+                $response['result'] = "danger";
+            }
+        }
+        return $response;
+    }
 }

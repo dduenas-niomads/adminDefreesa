@@ -40,9 +40,21 @@ class PartnerController extends Controller
         return $view;
     }
 
-    public function update($id, Request $request)
+    public function updateForm(Request $request)
     {
         $params = $request->all();
-        dd($id, $params);
+        $notification = true;
+        $result = ApiPartnerController::update(isset($params['id']) ? (int)$params['id'] : null, $params);
+        $view = view('partners.partners', compact('notification', 'result'));
+        return $view;
+    }
+
+    public function deleteForm(Request $request)
+    {
+        $params = $request->all();
+        $notification = true;
+        $result = ApiPartnerController::delete(isset($params['id']) ? (int)$params['id'] : null);
+        $view = view('partners.partners', compact('notification', 'result'));
+        return $view;
     }
 }
