@@ -80,7 +80,8 @@ Route::delete('/partners', 'Partner\PartnerController@deleteForm')->name('delete
 // Orders
 Route::get('/orders', 'Order\OrderController@index')->name('orders');
 Route::get('/orders/edit/{id}', 'Order\OrderController@edit')->name('order-edit');
-Route::put('/orders/{id}', 'Order\OrderController@update')->name('update-order');
+Route::put('/orders', 'Order\OrderController@updateForm')->name('update-form-order');
+Route::delete('/orders', 'Order\OrderController@deleteForm')->name('delete-form-order');
 // Payments
 Route::get('/payments', 'Payment\PaymentController@index')->name('payments');
 Route::put('/payments', 'Payment\PaymentController@updateForm')->name('update-form-payment');

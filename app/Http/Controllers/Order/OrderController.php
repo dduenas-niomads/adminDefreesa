@@ -44,4 +44,22 @@ class OrderController extends Controller
         $params = $request->all();
         dd($id, $params);
     }
+
+    public function updateForm(Request $request)
+    {
+        $params = $request->all();
+        $notification = true;
+        $result = ApiOrderController::update(isset($params['id']) ? (int)$params['id'] : null, $params);
+        $view = view('dashboard.overview', compact('notification', 'result'));
+        return $view;
+    }
+
+    public function deleteForm(Request $request)
+    {
+        $params = $request->all();
+        $notification = true;
+        $result = ApiOrderController::delete(isset($params['id']) ? (int)$params['id'] : null);
+        $view = view('dashboard.overview', compact('notification', 'result'));
+        return $view;
+    }
 }
