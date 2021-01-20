@@ -24,7 +24,7 @@
             <div class="card">
                 <div class="card-body">
                     <main class="col-md-12 ml-sm-auto col-lg-12 px-md-4 py-4">
-                        <div class="row my-4">
+                        <!-- <div class="row my-4">
                             <div class="col-12 col-md-6 col-lg-3 mb-4 mb-lg-0">
                                 <div class="card">
                                     <h5 class="card-header">Clientes</h5>
@@ -65,7 +65,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="row">
                             <div class="col-12 col-xl-12 mb-4 mb-lg-0">
                                 <div class="card">
