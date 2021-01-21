@@ -15,30 +15,43 @@
     firebase.initializeApp(config);
     var database = firebase.database();
     var lastIndex = 0;
-    // ACEPTAR
-    $('#acceptOrder').on('click', function () {
-        var values = $("#addCustomer").serializeArray();
-        var status = 1;
-        var userID = lastIndex + 1;
-        console.log(values);
-        firebase.database().ref('orders/' + userID).set({
-            status: status,
+    // Get Data
+    firebase.database().ref('orders/').on('value', function (snapshot) {
+        var value = snapshot.val();
+        var htmls = [];
+        $.each(value, function (index, value) {
+            if (value) {
+                htmls.push('<tr>\
+        		<td><b>N° </b>' + value.id + '</td>\
+        		<td>' + value.date + '</td>\
+        		<td><b>' + value.supplier + '</b></td>\
+        		<td width="17%"><b>Nombre: </b>' + value.client.name + '<br><b>Telf: </b>' + value.client.phone + '</td>\
+        		<td>' + value.detail + '</td>\
+        		<td>' + value.total + '</td>\
+        		<td>' + value.status + '</td>\
+        	</tr>');
+            }
+            lastIndex = index;
         });
-        // Reassign lastID value
-        lastIndex = userID;
+        $('#tbody').html(htmls);
+        $("#submitUser").removeClass('desabled');
     });
-    // RECHAZAR
-    $('#declineOrder').on('click', function () {
+    // Add Data
+    $('#submitCustomer').on('click', function () {
         var values = $("#addCustomer").serializeArray();
-        var status = 2;
+        var name = values[0].value;
+        var email = values[1].value;
         var userID = lastIndex + 1;
         console.log(values);
         firebase.database().ref('orders/' + userID).set({
-            status: status,
+            name: name,
+            email: email,
         });
         // Reassign lastID value
         lastIndex = userID;
-    });    
+        $("#addCustomer input").val("");
+    });
+
 </script>
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>

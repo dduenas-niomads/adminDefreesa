@@ -31,10 +31,10 @@ return [
     ],
     
     'firebase' => [
-        'api_key' => 'AIzaSyCMptqcvIR5GmVCBevQM_1T3S0MXnIf6wM',
-        'auth_domain' => 'defreesadb.firebaseapp.com',
-        'database_url' => 'https://defreesadb-default-rtdb.firebaseio.com/',
-        'storage_bucket' => 'defreesadb.appspot.com',
+        'api_key' => env('FIREBASE_API_KEY'),
+        'auth_domain' => env('FIREBASE_AUTH_DOMAIN'),
+        'database_url' => env('FIREBASE_DATABASE_URL'),
+        'storage_bucket' => env('FIREBASE_STORAGE_BUCKET'),
     ],
 
 ];
