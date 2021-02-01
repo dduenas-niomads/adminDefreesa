@@ -66,7 +66,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div> -->
+                        </div>
                         <div class="modal fade" id="modal-status" style="display: none;">
                             <div class="modal-dialog">
                             <div class="modal-content">
