@@ -29,5 +29,12 @@ return [
         'secret' => env('AWS_SECRET_ACCESS_KEY'),
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
+    
+    'firebase' => [
+        'api_key' => 'AIzaSyCMptqcvIR5GmVCBevQM_1T3S0MXnIf6wM',
+        'auth_domain' => 'defreesadb.firebaseapp.com',
+        'database_url' => 'https://defreesadb-default-rtdb.firebaseio.com/',
+        'storage_bucket' => 'defreesadb.appspot.com',
+    ],
 
 ];

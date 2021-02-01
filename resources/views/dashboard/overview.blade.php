@@ -24,45 +24,15 @@
             <div class="card">
                 <div class="card-body">
                     <main class="col-md-12 ml-sm-auto col-lg-12 px-md-4 py-4">
-                        <!-- <div class="row my-4">
-                            <div class="col-12 col-md-6 col-lg-3 mb-4 mb-lg-0">
-                                <div class="card">
-                                    <h5 class="card-header">Clientes</h5>
-                                    <div class="card-body">
-                                    <h5 class="card-title">34</h5>
-                                    <p class="card-text">Enero 1 - Hoy, Perú</p>
-                                    <p class="card-text text-success">18.2% aumento desde mes pasado</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-6 mb-4 mb-lg-0 col-lg-3">
-                                <div class="card">
-                                    <h5 class="card-header">Ingresos totales</h5>
-                                    <div class="card-body">
-                                    <h5 class="card-title">S/ 2400.00</h5>
-                                    <p class="card-text">Enero 1 - Hoy, Perú</p>
-                                    <p class="card-text text-success">4.6% aumento desde mes pasado</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-6 mb-4 mb-lg-0 col-lg-3">
-                                <div class="card">
-                                    <h5 class="card-header">Órdenes totales</h5>
-                                    <div class="card-body">
-                                    <h5 class="card-title">43</h5>
-                                    <p class="card-text">Enero 1 - Hoy, Perú</p>
-                                    <p class="card-text text-info">2.6% aumento desde mes pasado</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-6 mb-4 mb-lg-0 col-lg-3">
-                                <div class="card">
-                                    <h5 class="card-header">Movimiento de productos</h5>
-                                    <div class="card-body">
-                                    <h5 class="card-title">64</h5>
-                                    <p class="card-text">Enero 1 - Hoy, Perú</p>
-                                    <p class="card-text text-info">2.5% aumento desde mes pasado</p>
-                                    </div>
+                        <!-- <div class="container" style="margin-top: 50px;">
+                            <div class="card card-default">
+                            <h5># Estado de Orden</h5>
+                                <div class="card-body">
+                                    <form id="addCustomer" class="form-inline" method="POST" action="">
+                                        <div class="form-group mb-2">
+                                        <button id="acceptOrder" type="button" class="btn btn-primary mb-2">ACEPTAR</button>
+                                        <button id="declineOrder" type="button" class="btn btn-primary mb-2">RECHAZAR</button>
+                                    </form>
                                 </div>
                             </div>
                         </div> -->
@@ -71,62 +41,86 @@
                                 <div class="card">
                                     <h5 class="card-header">Últimos movimientos</h5>
                                     <div class="card-body">
-                                        <div class="table-responsive">
-                                            <table class="table">
-                                                <thead>
-                                                <tr>
-                                                    <th scope="col">Órden</th>
-                                                    <th scope="col">Detalle</th>
-                                                    <th scope="col">Cliente</th>
-                                                    <th scope="col">Total</th>
-                                                    <th scope="col">Fecha</th>
-                                                    <th scope="col"></th>
+                                        <table id="example1" class="table table-bordered table-hover dataTable dtr-inline" role="grid" aria-describedby="example2_info">
+                                            <thead>
+                                                <tr role="row">
+                                                    <th>N.Orden</th>
+                                                    <th>Fecha creación</th>
+                                                    <th>Tienda</th>
+                                                    <th>Cliente</th>
+                                                    <th>Detalle</th>
+                                                    <th>Total</th>
+                                                    <th>Estado</th>
+                                                    <th width="17%">Opciones</th>
                                                 </tr>
-                                                </thead>
-                                                <tbody>
-                                                <tr>
-                                                    <th scope="row">204</th>
-                                                    <td>1 pollo a la brasa (1) y Pack parrillero (1)</td>
-                                                    <td>Xavier</td>
-                                                    <td>142.30</td>
-                                                    <td>2020-11-23</td>
-                                                    <td><a href="#" class="btn btn-sm btn-success">ENTREGADO</a></td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">202</th>
-                                                    <td>1 pollo a la brasa (1), Pack parrillero (1), Parrilla para dos (1) y Caja de cervezas (1)</td>
-                                                    <td>Jesus</td>
-                                                    <td>283.20</td>
-                                                    <td>2020-11-23</td>
-                                                    <td><a href="#" class="btn btn-sm btn-danger">ANULADO</a></td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">204</th>
-                                                    <td>1 pollo a la brasa</td>
-                                                    <td>Henry</td>
-                                                    <td>59.90</td>
-                                                    <td>2020-11-23</td>
-                                                    <td><a href="#" class="btn btn-sm btn-warning">POR ENTREGAR</a></td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                        <a href="/orders" class="btn btn-block btn-light">Ver todo</a>
+                                            </thead>
+                                        </table>
                                     </div>
                                 </div>
                             </div>
-                            <!-- <div class="col-12 col-xl-4">
-                                <div class="card">
-                                    <h5 class="card-header">Traffic last 6 months</h5>
-                                    <div class="card-body">
-                                        <div id="traffic-chart"></div>
-                                    </div>
+                        </div>
+                        <div class="modal fade" id="modal-status" style="display: none;">
+                            <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                <h4 class="modal-title">Leyenda de estados</h4>
                                 </div>
-                            </div> -->
+                                <div class="modal-body" id="statusModalBody">
+                                </div>
+                                <div class="modal-footer">
+                                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Regresar</button>
+                                </div>
+                            </div>
+                            <!-- /.modal-content -->
+                            </div>
+                            <!-- /.modal-dialog -->
+                        </div>
+                        <div class="modal fade" id="modal-delete" style="display: none;">
+                            <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                <h4 class="modal-title">Rechazar pedido</h4>
+                                </div>
+                                <div class="modal-body" id="deleteModalBody">
+                                </div>
+                            <div class="modal-footer">
+                                {{ Form::open(array('url' => '/orders', 'method' => 'DELETE')) }}
+                                <input type="hidden" name="id" id="deleteModalId">
+                                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Regresar</button>
+                                    <button type="submit" class="btn btn-danger">RECHAZAR</button>
+                                {{ Form::close() }}
+                            </div>
+                            </div>
+                            <!-- /.modal-content -->
+                            </div>
+                            <!-- /.modal-dialog -->
+                        </div>
+                        <div class="modal fade" id="modal-accept" style="display: none;">
+                            <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                <h4 class="modal-title">Aceptar pedido</h4>
+                                </div>
+                                <div class="modal-body" id="acceptModalBody">
+                                </div>
+                            <div class="modal-footer">
+                                {{ Form::open(array('url' => '/orders', 'method' => 'PUT')) }}
+                                <input type="hidden" name="id" id="acceptModalId">
+                                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Regresar</button>
+                                    <button type="submit" class="btn btn-success">Aceptar</button>
+                                {{ Form::close() }}
+                            </div>
+                            </div>
+                            <!-- /.modal-content -->
+                            </div>
+                            <!-- /.modal-dialog -->
                         </div>
                     </main>
                 </div>
             </div>
         </div>
     </div>
+@stop
+@section('scripts')
+    @include('dashboard.partials.scripts-orders')
 @stop
