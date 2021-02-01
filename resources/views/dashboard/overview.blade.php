@@ -26,14 +26,22 @@
                     <main class="col-md-12 ml-sm-auto col-lg-12 px-md-4 py-4">
                         <!-- <div class="container" style="margin-top: 50px;">
                             <div class="card card-default">
-                            <h5># Estado de Orden</h5>
-                                <div class="card-body">
-                                    <form id="addCustomer" class="form-inline" method="POST" action="">
-                                        <div class="form-group mb-2">
-                                        <button id="acceptOrder" type="button" class="btn btn-primary mb-2">ACEPTAR</button>
-                                        <button id="declineOrder" type="button" class="btn btn-primary mb-2">RECHAZAR</button>
-                                    </form>
-                                </div>
+
+                            <h5>Últimos Movimientos</h5>
+                            <table class="table table-bordered">
+                                <tr>
+                                    <th>N.Orden</th>
+                                    <th>Fecha creación</th>
+                                    <th>Tienda</th>
+                                    <th>Cliente</th>
+                                    <th>Detalle</th>
+                                    <th>Total</th>
+                                    <th>Estado</th>
+                                </tr>
+                                <tbody id="tbody">
+
+                                </tbody>
+                            </table>
                             </div>
                         </div> -->
                         <div class="row">
@@ -58,7 +66,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="modal fade" id="modal-status" style="display: none;">
                             <div class="modal-dialog">
                             <div class="modal-content">
