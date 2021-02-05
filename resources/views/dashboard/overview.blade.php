@@ -24,7 +24,7 @@
             <div class="card">
                 <div class="card-body">
                     <main class="col-md-12 ml-sm-auto col-lg-12 px-md-4 py-4">
-                        <!-- <div class="container" style="margin-top: 50px;">
+                        <div class="container" style="margin-top: 50px;">
                             <div class="card card-default">
 
                             <h5>Últimos Movimientos</h5>
@@ -43,7 +43,7 @@
                                 </tbody>
                             </table>
                             </div>
-                        </div> -->
+                        </div>
                         <div class="row">
                             <div class="col-12 col-xl-12 mb-4 mb-lg-0">
                                 <div class="card">
