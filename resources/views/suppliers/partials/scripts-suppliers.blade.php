@@ -127,6 +127,7 @@
             "rowCallback": function( row, data, index ) {
                 var $node = this.api().row(row).nodes().to$();
                 var freeDemand = parseFloat(data.on_demand) - parseFloat(data.on_demand_now);
+                console.log(freeDemand, freeDemand >= 10);
                 if (freeDemand >= 10) {
                     $node.addClass('success');
                 } else if (freeDemand >= 5) {
