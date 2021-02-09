@@ -104,6 +104,9 @@
                     return data.description;
                 }},
                 {'data':   function (data) {
+                    return data.on_demand;
+                }},
+                {'data':   function (data) {
                     var message = "Activo";
                     if (data.flag_active != 1) {
                     message = "Inactivo";
@@ -136,6 +139,7 @@
                 document.getElementById('infoModalName').value = arraySuppliers[supplierId].name;
                 document.getElementById('infoModalRuc').value = arraySuppliers[supplierId].ruc;
                 document.getElementById('infoModalBusinessName').value = arraySuppliers[supplierId].business_name;
+                document.getElementById('infoModalOnDemand').value = arraySuppliers[supplierId].on_demand;
                 document.getElementById('infoModalPhone').value = arraySuppliers[supplierId].phone;
                 document.getElementById('infoModalAddress').value = arraySuppliers[supplierId].address;
                 document.getElementById('infoModalDescription').value = arraySuppliers[supplierId].description;
@@ -159,6 +163,7 @@
                 document.getElementById('editModalRuc').value = arraySuppliers[supplierId].ruc;
                 document.getElementById('editModalBusinessName').value = arraySuppliers[supplierId].business_name;
                 document.getElementById('editModalPhone').value = arraySuppliers[supplierId].phone;
+                document.getElementById('editOnDemand').value = arraySuppliers[supplierId].on_demand;
                 document.getElementById('editModalAddress').value = arraySuppliers[supplierId].address;
                 document.getElementById('editModalCategoryId').value = arraySuppliers[supplierId].bs_categories_id;
                 document.getElementById('editModalRegionId').value = arraySuppliers[supplierId].bs_ms_region_id;

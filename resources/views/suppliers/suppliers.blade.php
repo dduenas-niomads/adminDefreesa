@@ -118,7 +118,8 @@
                                 <th>Ruc</th>
                                 <th>Razón Social</th>
                                 <th>Descripción</th>
-                                <th>Estado</th>
+								<th>En Demanda</th>
+								<th>Estado</th>
                                 <th width="20%">Opciones</th>
                             </tr>
                         </thead>
@@ -204,6 +205,12 @@
 													<label class="col-sm-3 col-form-label">Descripción</label>
 													<div class="col-sm-9">
 														<input type="text" class="form-control" placeholder="Descripción" id="infoModalDescription" readonly>
+													</div>
+												</div>
+												<div class="form-group row">
+													<label class="col-sm-3 col-form-label">En demanda</label>
+													<div class="col-sm-9">
+														<input type="text" class="form-control" placeholder="Máximo de demanda de pedidos" id="infoModalOnDemand" readonly>
 													</div>
 												</div>
 												<div class="form-group row">
@@ -360,6 +367,12 @@
 												<label class="col-sm-3 col-form-label">Descripción</label>
 												<div class="col-sm-9">
 													<input type="text" class="form-control" placeholder="Descripción" name="description" id="editModalDescription" onClick="this.select();" autocomplete="off" maxlength="200">
+												</div>
+											</div>
+											<div class="form-group row">
+												<label class="col-sm-3 col-form-label">En demanda</label>
+												<div class="col-sm-9">
+													<input type="text" class="form-control" placeholder="Ingresar máximo de demanda" name="on_demand" id="editOnDemand" onClick="this.select();" autocomplete="off" maxlength="3">
 												</div>
 											</div>
 											<div class="form-group row">
