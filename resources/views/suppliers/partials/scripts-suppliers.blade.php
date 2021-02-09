@@ -107,6 +107,9 @@
                     return data.on_demand;
                 }},
                 {'data':   function (data) {
+                    return data.on_demand_now;
+                }},
+                {'data':   function (data) {
                     var message = "Activo";
                     if (data.flag_active != 1) {
                     message = "Inactivo";
@@ -121,6 +124,17 @@
                     '</div>';
                 }, "orderable": false},
             ],
+            "rowCallback": function( row, data, index ) {
+                var $node = this.api().row(row).nodes().to$();
+                var freeDemand = parseFloat(data.on_demand) - parseFloat(data.on_demand_now);
+                if (freeDemand >= 10) {
+                    $node.addClass('success');
+                } else if (freeDemand >= 5) {
+                    $node.addClass('warning');
+                } else {
+                    $node.addClass('danger');
+                }
+            },
         });
         openNewModal = function() {
             $('#modal-new').modal({ backdrop: 'static', keyboard: false });

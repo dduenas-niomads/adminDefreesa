@@ -118,6 +118,7 @@
                                 <th>Ruc</th>
                                 <th>Razón Social</th>
                                 <th>Descripción</th>
+								<th>Máx. Demanda</th>
 								<th>En Demanda</th>
 								<th>Estado</th>
                                 <th width="20%">Opciones</th>
