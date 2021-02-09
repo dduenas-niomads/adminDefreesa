@@ -129,11 +129,11 @@
                 var freeDemand = parseFloat(data.on_demand) - parseFloat(data.on_demand_now);
                 console.log(freeDemand, freeDemand >= 10);
                 if (freeDemand >= 10) {
-                    $node.addClass('success');
+                    $node.addClass('table-success');
                 } else if (freeDemand >= 5) {
-                    $node.addClass('warning');
+                    $node.addClass('table-warning');
                 } else {
-                    $node.addClass('danger');
+                    $node.addClass('table-danger');
                 }
             },
         });
