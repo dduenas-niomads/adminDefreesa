@@ -124,7 +124,6 @@
                                                     <option value="04">CARNÉ EXTRANJERÍA</option>
                                                     <option value="06">RUC</option>
                                                     <option selected value="07">PASAPORTE</option>
-                                                @endif
                                                 @else ( $account['type_document'] === '06')
                                                     <option value="01">CI/DNI</option>
                                                     <option value="04">CARNÉ EXTRANJERÍA</option>
