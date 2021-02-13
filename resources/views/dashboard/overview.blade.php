@@ -24,26 +24,6 @@
             <div class="card">
                 <div class="card-body">
                     <main class="col-md-12 ml-sm-auto col-lg-12 px-md-4 py-4">
-                        <div class="container" style="margin-top: 50px;">
-                            <div class="card card-default">
-
-                            <h5>Últimos Movimientos</h5>
-                            <table class="table table-bordered">
-                                <tr>
-                                    <th>N.Orden</th>
-                                    <th>Fecha creación</th>
-                                    <th>Tienda</th>
-                                    <th>Cliente</th>
-                                    <th>Detalle</th>
-                                    <th>Total</th>
-                                    <th>Estado</th>
-                                </tr>
-                                <tbody id="tbody">
-
-                                </tbody>
-                            </table>
-                            </div>
-                        </div>
                         <div class="row">
                             <div class="col-12 col-xl-12 mb-4 mb-lg-0">
                                 <div class="card">
